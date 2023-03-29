@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./festivityLogin.css" media="screen" /> 
+    <title>Festivity</title>
+    <link rel="icon" href="./imagens/event.png" type="image/png">
+</head>
+<body>
+    
+
+    <section  name="formularios" class="formularios">
+
+        <div class="container">
+
+            <div class="containerText">
+
+                <p>Para criar sua conta</p>
+                <p>Insira seus dados conforme os campos abaixo:</p>
+        
+            </div>
+    
+    
+            <div class="containerInputs">
+                <form>
+                        <div  class="containerNome">
+                            <!-- <label>Insira seu Nome:</label> -->
+                            <br>
+                            <input 
+                                type="text" 
+                                name="text" 
+                                placeholder="insira seu nome"
+                                required
+                                title="exemplo de nome: Carlos Eduardo"
+                            > 
+                        </div>
+
+                        <div  class="containerCpf">
+                            <!-- <label>Insira seu cpf:</label> -->
+                            <br>
+                            <input 
+                                type="number" 
+                                name="number" 
+                                placeholder="insira seu cpf"
+                                pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" 
+                                required
+                                title="(XXX.XXX.XXX-XX)."
+                            > 
+                        </div>
+
+                        <div  class="containerData">
+                            <!-- <label>Insira a data de seu nascimento:</label> -->
+                            <br>
+                            <input 
+                                type="date" 
+                                name="date" 
+                                placeholder="insira sua data de nascimento"
+                                required
+                                title="dia/mês/ano"
+                            > 
+                        </div>
+
+                        <div class="containerEmail">
+                            <label>Insira seu email:</label>
+                            <br>
+                            <input 
+                                type="email" 
+                                name="email" 
+                                placeholder="example@example.com" 
+                                pattern="[a-zA-Z0-9._%+-]+@gmail.com"
+                                required
+                                title="formato do email:example@example.com"
+                            > 
+                        </div>
+
+                
+                        <div  class="containerSenha">
+                            <label>Insira sua senha:</label>
+                            <br>
+                            <input 
+                                type="password" 
+                                name="password" 
+                                placeholder="*********"
+                                pattern="(?=.*\d)(?=.*[!@#$%^&*()]).{8,}" 
+                                required
+                                title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
+                            > 
+                        </div>
+                    </div>
+    
+                    <div  class="botaoLogin">
+                        <button type="submit">Logar</button>
+                    </div>
+                </form>
+    
+            <div  class="configuracaoConta">
+                <a><p>Esqueci minha senha</p></a>
+                <a><p>Ainda não sou cliente </p></a>
+            </div>
+    
+            <br>
+            <br>
+            <br>
+
+        </div>
+
+    </section>
+
+    <script>
+
+        const email = "example@example.com";
+        const regex = /^\S+@\S+\.\S+$/;
+
+        if (regex.test(email)) {
+            console.log("Email válido");
+        } else {
+            console.log("Email inválido");
+        }
+
+    </script>
+</body>
+</html>
