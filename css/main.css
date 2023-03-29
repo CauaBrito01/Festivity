@@ -1,0 +1,239 @@
+main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_container{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#titulo_evento{
+    margin-top: 2rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #1B2124;
+    font-size: 25px;
+    font-family: "Rubik";
+    font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
+    font-weight: bold;
+    width: 50%;
+    justify-content: flex-end;
+}
+
+
+.midias_sociais_do_evento{
+    display: flex;
+    margin-top: 1.2rem;
+    justify-content: flex-end;
+    background-color: rgb(243, 245, 247);
+    color: rgb(27, 33, 36);
+    border-color: transparent;
+    font-size: 20px;
+    border-radius: 25px 25px 25px 25px;
+
+}    
+
+
+.logo_midias_sociais{
+    width: 30px;
+    height: 30px;
+    margin: 0.5rem;
+}
+
+.dados_evento{
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+    margin-top: 2rem;
+    padding-bottom: 3rem;
+    border-bottom: 2px solid rgb(186, 186, 186);
+}
+
+.data_horario{
+     width: 33,33%;
+    align-items: center;
+}
+
+.endereco{
+    width: 33,33%;
+    align-items: center;
+
+}
+
+.faixa_etaria{
+    width: 33,33%;
+    align-items: center;
+
+}
+
+
+.icone_dados{
+    margin-right: 0.5rem;
+}
+
+.subtitulo_dados_evento{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    justify-content: center;
+
+}
+
+.info_evento{
+    display: flex;
+    justify-content: center;
+    color: #333;
+    font-family: 'Rubik';
+    margin-bottom: 1.5rem;
+
+}
+
+
+.descricao_evento{  
+    width: 80%;
+    display: flex;
+    margin-top: 2rem;
+    
+}
+
+.titulo_descricao{
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #1B2124;
+    font-size: 20px;
+    font-family: "Rubik";
+    font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.txt_descricao{
+    color: #333;
+    font-family: 'Rubik' !important;
+    margin-bottom: 1.5rem;
+}
+
+
+.img_logo_organizador_evento{
+    height: 80px;
+    width: 80px;
+    border-radius: 80px;
+}
+
+.descricao{
+    width: 60%;
+    border-right: 2px solid rgb(186, 186, 186);
+    padding-right: 1rem;    
+}
+
+.info_organizadores{
+    display: flex;
+    align-items: center;
+    width: 40%;
+    padding-left: 1rem;
+}
+
+.desc_organizadores{
+    display: flex;
+    align-items: center;
+}
+
+.desc_organizadores img{
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.container_compra{
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between  ;
+    width: 80%;
+    margin-bottom: 2rem;
+}
+
+
+.politica_cancelamento{
+    width: 40%;
+
+}
+
+.politica_cancelamento h3{
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #1B2124;
+    font-size: 20px;
+    font-family: "Rubik";
+    font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.politica_cancelamento p{
+    color: #333;
+    font-family: 'Rubik' !important;
+    margin-bottom: 1.5rem;
+    text-align: start;
+}
+
+
+.compra_ingressos{
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    width: 35%;
+    padding-right: 1rem;
+    align-items: center;
+    border-left: 2px solid rgb(186, 186, 186);
+    padding-left: 2.79rem;
+}
+
+.lote_atual{
+    font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
+    font-weight: bold;
+    color: #1B2124;
+    margin-top: 1.2rem;
+    margin-left: 1rem;
+}
+
+.valor_ingresso{
+    display: flex;
+    font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
+    font-weight: bold;
+    color: #1B2124;
+    margin-left: 1rem;
+}
+
+.valor_ingresso p{
+    margin-top: 0.8rem;
+    font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
+    font-weight: bold;
+    color: #1B2124;
+    font-weight: 700; 
+      
+}
+
+.icon_compra{
+    width: 20px;
+    height: 20px;
+    
+}
+
+.botoes_compra{
+    width:80%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.botao{
+    border: none;
+    cursor: pointer;
+    margin: 0.5rem;
+    background-color: white;
+}
+
