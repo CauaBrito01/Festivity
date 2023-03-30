@@ -21,7 +21,7 @@ body {
 }
 
 .formularios {
-    height: 600px;
+    height: 740px;
     width: 430px;
     background-color: var(--cinzaClaro);
     margin-top: 10%;
@@ -40,7 +40,7 @@ body {
 }
 
 
-.containerEmail, .containerSenha, .containerCpf, .containerNome, .containerData {
+.containerEmail, .containerSenha, .containerCpf, .containerNome, .containerData, .containerCel {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -173,3 +173,43 @@ body {
         font-size: larger;
     }
 }
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='4' viewBox='0 0 6 4'%3E%3Cpath d='M3 4L0 0h6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 6px 4px;
+    padding-right: 24px; /* adiciona um espaÃ§o para a seta personalizada */
+  }
+  
+  /* estiliza o select */
+  select {
+    border: none;
+    border-radius: 4px;
+    padding: 8px 90px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  
+  /* adiciona efeito hover */
+  select:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* adiciona efeito focus */
+  select:focus {
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* estiliza a seta personalizada quando o select estÃ¡ aberto */
+  select:active,
+  select:focus {
+    background-position: right -12px center;
+  }
