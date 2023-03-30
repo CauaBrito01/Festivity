@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./festivityLogin.css" media="screen" /> 
+    <link rel="stylesheet" type="text/css" href="./registerAcount.css" media="screen" /> 
     <title>Festivity</title>
     <link rel="icon" href="./imagens/event.png" type="image/png">
 </head>
@@ -75,14 +75,46 @@
                             > 
                         </div>
 
-                
+                        <div  class="containerNome">
+                            <select>
+                                <option>Masculino</option>
+                                <option>Feminino</option>
+                                <option>Outros</option>
+                            </select>
+                        </div>
+
+                        <div  class="containerCel">
+                            <br>
+                            <input 
+                                type="tel" 
+                                name="tel" 
+                                placeholder="insira seu telefone"
+                                pattern="" 
+                                required
+                                title="insira seu telefone"
+                            > 
+                        </div>
+
                         <div  class="containerSenha">
                             <label>Insira sua senha:</label>
                             <br>
                             <input 
                                 type="password" 
                                 name="password" 
-                                placeholder="*********"
+                                placeholder="senha"
+                                pattern="(?=.*\d)(?=.*[!@#$%^&*()]).{8,}" 
+                                required
+                                title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
+                            > 
+                        </div>
+
+                        <div  class="containerSenha">
+                            <label>Confirme sua senha:</label>
+                            <br>
+                            <input 
+                                type="password" 
+                                name="password" 
+                                placeholder="confirme sua senha"
                                 pattern="(?=.*\d)(?=.*[!@#$%^&*()]).{8,}" 
                                 required
                                 title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
