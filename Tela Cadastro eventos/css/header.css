@@ -1,0 +1,65 @@
+*{
+    font-family: 'Oswald', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+header .logo img{
+    width: 80px;
+    height: 80px;
+}
+.bodyID{
+    background-color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.headerID{
+    width: 88%;
+    margin-top: 10px;
+}
+header .sectionHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+header .headerOptions{
+    display: flex;
+    align-items: center;
+}
+
+.headerOptions a{
+    margin-left: 20px;
+}
+
+.headerOptions a p{
+    color: #b6b6b6;
+}
+
+.sectionLoginSearch{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 4vw;
+}
+
+.loginEcadastro{
+    display: flex;
+}
+
+.loginEcadastro a{
+    background-color: red;
+    padding: 8px 16px;
+    border-radius: 3px;
+}
+
+.loginEcadastro a p{
+    color: white;
+}
+
+.cadastro{
+    margin-left: 20px;
+}
