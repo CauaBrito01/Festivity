@@ -7,8 +7,9 @@ a{
 }
 
 header .logo img{
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
+    position: absolute;
 }
 .bodyID{
     background-color: #333333;
@@ -19,7 +20,8 @@ header .logo img{
 }
 .headerID{
     width: 88%;
-    margin-top: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 header .sectionHeader{
     display: flex;
@@ -37,6 +39,10 @@ header .headerOptions{
 
 .headerOptions a p{
     color: #b6b6b6;
+}
+
+.headerOptions a p:hover{
+    color: #cfcfcf;
 }
 
 .sectionLoginSearch{
@@ -58,6 +64,10 @@ header .headerOptions{
 
 .loginEcadastro a p{
     color: white;
+}
+
+.loginEcadastro a:hover{
+    background-color: rgb(255, 24, 24);
 }
 
 .cadastro{
