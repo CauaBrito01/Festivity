@@ -70,9 +70,29 @@
                         </div>
                     </div>
                     <div class="secao3">
-
+                        <p class="secao_registro">03|Preencha Informações sobre localidade e compra</p>
+                        <p class="campo_registro">Endereço do Evento*</p>
+                        <input class="input_info_evento" placeholder="Ex: Campinas Hall - CURITIBA / PR" type="text">
+                        <p class="campo_registro">Data e Horario*</p>
+                        <input class="input_info_evento" placeholder="Ex: 05 de abril • 23:00 até 06 de abril • 05:00" type="text">
+                        <p class="campo_registro">Valor Ingressos*</p>
+                        <input class="input_info_evento" placeholder="Ex:Primeiro lote 80R$, Segundo lote 160R$, Lote V.I.P 300R$" type="text">
+                        <p class="campo_registro">Faixa Etaria do Evento*</p>
+                        <input class="input_info_faixa_etaria" placeholder="Ex: Proibido para menores de 18 anos" type="text">
                     </div>
-                    
+                    <div class="secao4">
+                        <p class="secao_registro">04|Persolanize sua Pagina de Evento</p>
+                        <form action="/upload" method="post" enctype="multipart/form-data">
+                            <p class="campo_registro">Imagem de Perfil*</p>
+                            <input type="file" name="fileUpload" multiple>
+                            <p class="campo_registro">Imagem de Capa*</p>
+                            <input type="file" name="fileUpload" multiple>
+                        </form>
+                        <div class="botoes">
+                            <button class="button">VOTLAR</button>
+                            <button class="button">CRIAR PAGINA</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,7 +100,7 @@
     </main>
     <footer>
         <div class="footerInformation">
-            <p>cliente@cheersticket.com.br</p>
+            <p>cliente@aleatorio.com.br</p>
             <p>Todos os direitos reservados</p>
             <p>Nossas redes! <a target="_blank" href="https://i.pinimg.com/originals/fd/35/14/fd351489cccd7642ca81b5e38a3154f5.jpg"><img src="./images/insta.png" alt=""></a></p>
         </div>
