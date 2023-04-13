@@ -1,0 +1,18 @@
+footer{
+    width: 100%;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    background-color: #333333;
+}
+
+.footerInformation{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footerInformation p{
+    color: white;
+    display: flex;
+    align-items: center;
+}
