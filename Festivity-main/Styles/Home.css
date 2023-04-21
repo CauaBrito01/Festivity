@@ -1,0 +1,103 @@
+p, h3{
+    font-family: 'Oswald', sans-serif;
+}
+.centerContent{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row1{
+    display: flex;
+}
+.row2{
+    display: flex;
+}
+
+.anuncioEvento{
+    padding: 2% 2%;
+    box-shadow: 2px 5px 20px 5px #888888;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-right: 3%;
+    margin-left: 3%;
+}
+
+.anuncioEvento img{
+    width: 25vw;
+    height: 35vh;
+}
+
+.textosEvento{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 25vw;
+}
+
+.textosEvento h3{
+    margin-bottom: 5px;
+}
+
+.butomsAnuncio{
+    display: flex;
+    justify-content: space-around;
+}
+
+.coldplay{
+    margin-top: 9vh;
+}
+
+
+
+.EventTitle{
+    font-size: 3.5vh;
+
+}
+
+.original-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-decoration: none;
+    color: red;
+    font-size: 18px;
+    border-radius: 0px;
+    width: 200px;
+    height: 40px;
+    position: relative;
+    transition: 0.3s;
+    overflow: hidden;
+    border: none;
+    background-color: white;
+  }
+  .original-button a{
+      color: red;
+  }
+  .original-button::before, .original-button::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    background-color: red;
+    transition: .3s;
+  }
+  
+  .original-button::before {
+    top: 0;
+  }
+  
+  .original-button::after {
+    bottom: 0;
+  }
+  
+  .original-button:hover::before {
+    transform: translateX(-100%);
+  }
+  
+  .original-button:hover::after {
+    transform: translateX(100%);
+  }
