@@ -1,3 +1,6 @@
+p, h3{
+    font-family: 'Oswald', sans-serif;
+}
 .centerContent{
     display: flex;
     justify-content: center;
@@ -45,15 +48,56 @@
     margin-top: 9vh;
 }
 
-.butomsAnuncio a{
-    text-decoration: none;
-    background-color: red;
-    padding: 10px 20px;
-    border-radius: 2px;
-    color: white;
+
+
+.EventTitle{
+    font-size: 3.5vh;
+
 }
 
-.butomsAnuncio a:hover{
-    background-color: rgb(255, 29, 29);
-    transition: 0.8s;
-}
+.original-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-decoration: none;
+    color: red;
+    font-size: 18px;
+    border-radius: 0px;
+    width: 200px;
+    height: 40px;
+    position: relative;
+    transition: 0.3s;
+    overflow: hidden;
+    border: none;
+    background-color: white;
+  }
+  .original-button a{
+      color: red;
+  }
+  .original-button::before, .original-button::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    background-color: red;
+    transition: .3s;
+  }
+  
+  .original-button::before {
+    top: 0;
+  }
+  
+  .original-button::after {
+    bottom: 0;
+  }
+  
+  .original-button:hover::before {
+    transform: translateX(-100%);
+  }
+  
+  .original-button:hover::after {
+    transform: translateX(100%);
+  }
