@@ -11,72 +11,151 @@
 </head>
 <body>
     
+    <main>
 
-    <section  name="formularios" class="formularios">
+        <section class="gifContainer">
+            <img src="../images/vendaTickets.gif">
+        </section>
 
-        <div class="container">
+        <section class="blocoFormularios">
+            
+                <div class="titulos">
 
-            <div class="containerText">
+                    <p>Para logar em sua conta</p>
+                    <p>Insira seus dados conforme os campos abaixo:</p>
+            
+                </div>
 
-                <p>Bem vindo ao Festivity</p>
-                <p>Para continuar faça seu login</p>
-        
-            </div>
-    
-    
-            <div class="containerInputs">
-                <form>
-                    <div class="containerEmail">
-                        <label>Insira seu email:</label>
-                        <br>
+                
+                <div class="tipoDeUsuario" name="tipoDeUsuario">
+                    <a name="cliente" class="ativo" onclick="selectTipoCliente()">cliente</a>
+                    <a>&nbsp;|&nbsp;</a>
+                    <a name="organizador" class="" onclick="selectTipoOrganizador()">Organizador</a>
+                </div>
+
+                <div class="containerInputs">
+                    <form name="clienteForm">
+                    
+                        
                         <input 
                             type="email" 
                             name="email" 
                             placeholder="example@example.com" 
-                            pattern="[a-zA-Z0-9._%+-]+@gmail.com"
-                            required
                             title="formato do email:example@example.com"
                         > 
-                    </div>
-                
-                        <div  class="containerSenha">
-                            <label>Insira sua senha:</label>
-                            <br>
-                            <input 
-                                type="password"  
-                                name="password" 
-                                placeholder="*********"
-                                pattern="(?=.*\d)(?=.*[!@#$%^&*()]).{8,}" 
-                                required
-                                title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
-                            > 
+
+                        
+                        <input 
+                            type="password" 
+                            name="password" 
+                            placeholder="senha"                         
+                            title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
+                        > 
+
+                        <div  class="botaoLogin">
+                            <button type="submit" onclick="logarCliente()">Logar</button>
                         </div>
-                    </div>
-    
-                    <div  class="botaoLogin">
-                        <button type="button"><a href="./Home.html">Logar</a></button>
-                    </div>
-                </form>
-    
-            <div  class="configuracaoConta">
-                
-                <a href="./registerAcount.html "><p>Ainda não sou cliente </p></a>
-            </div>
-        </div>
+                    </form>
 
-    </section>
+                    <form class="orgForm hidden" name="organizadorForm">
+                      
+                        <input 
+                            type="text" 
+                            name="cnpj" 
+                            placeholder="insira o cnpj da empresa"                                
+                        > 
 
-    <script>
+                        
+                        <input 
+                            type="password" 
+                            name="senhaOrganizador" 
+                            placeholder="senha"                         
+                            title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
+                        > 
 
-        const email = "example@example.com";
-        const regex = /^\S+@\S+\.\S+$/;
+                        <div  class="botaoLogin">
+                            <button type="submit" onclick="logarOrganizador()">Logar</button>
+                        </div>
+                    </form>
 
-        if (regex.test(email)) {
-            console.log("Email válido");
-        } else {
-            console.log("Email inválido");
-        }
 
-    </script>
+                </div> 
+        </section>
+
+        <section class="gifContainer">
+            <img src="../images/breja.gif">
+        </section>
+
+    </main>
+
 </body>
 </html>
+<script>
+
+    //constantes de usuario
+
+    const tipoDeUsuario = document.querySelector('div[name="tipoDeUsuario"]');
+    const cliente = tipoDeUsuario.querySelector('a[name="cliente"]');
+    const organizador = tipoDeUsuario.querySelector('a[name="organizador"]');
+    const form = document.querySelector('form[name="clienteForm"]');
+    const orgForm = document.querySelector('form[name="organizadorForm"]');
+
+    //constantes de regex cliente
+
+    const email = form.querySelector('input[name="email"]');
+    const senha = form.querySelectorAll('input[type="password"]')[0];
+
+    //constantes de regex organizador
+    const cnpj = document.querySelector('input[name="cnpj"]');
+    const senhaOrganizador = document.querySelectorAll('input[type="senhaOrganizador"]')[0];
+
+    //regex expressoes
+    
+    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const regexCnpj = /^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/;
+    const regexSenha = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+    
+    function logarCliente(){
+
+        if (!regexEmail.test(email.value)) {
+            event.preventDefault();
+            alert('O email inserido é invalido, exemplo de email válido: kaua.silva@outlook.com');
+        }
+
+        if (!regexSenha.test(senha.value)) {
+            event.preventDefault();
+            alert('A senha inserida é incorreta.');
+        }
+
+    }
+
+    function logarOrganizador(){
+
+        if (!regexCnpj.test(cnpj.value)) {
+            event.preventDefault();
+            alert('O cpnj inserido é invalido');
+        }
+
+        if (!regexSenha.test(senhaOrganizador.value)) {
+            event.preventDefault();
+            alert('A senha inserida é incorreta.');
+        }
+
+    }
+
+    function selectTipoCliente(){
+        cliente.classList.add("ativo");
+        organizador.classList.remove("ativo");
+        form.classList.remove("hidden");
+        orgForm.classList.add("hidden");
+    }
+
+    function selectTipoOrganizador(){
+        organizador.classList.add("ativo");
+        cliente.classList.remove("ativo");
+        form.classList.add("hidden");
+        orgForm.classList.remove("hidden");
+    }
+    
+    
+</script>
