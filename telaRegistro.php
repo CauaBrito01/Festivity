@@ -1,19 +1,18 @@
 <?php
-
     if(isset($_POST['submit']))
     {
         include_once('config.php');
 
-        $id = 18;     
+             
         $nome  = $_POST['text'];
         $cpf = $_POST['cpf'];
         $dataNasc = $_POST['data'];
         $email = $_POST['email'];
         $SEXO = $_POST['sexo'];
         $telefone = $_POST['tel'];
-        $senha = $_POST['password'];
+        $minhasenha = MD5($_POST['password']);
 
-        $result = mysqli_query($conexao, "INSERT INTO cliente(Id_cliente,Nome,CPF,Data_nascimento,Email,Sexo,Telefone,Senha) VALUES ('$id','$nome','$cpf','$dataNasc','$email','$SEXO','$telefone','$senha')");
+        $result = mysqli_query($conexao, "INSERT INTO cliente(Nome,CPF,Data_nascimento,Email,Sexo,Telefone,Senha) VALUES ('$nome','$cpf','$dataNasc','$email','$SEXO','$telefone','$minhasenha')");
     }
 ?>
 
