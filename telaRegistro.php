@@ -1,9 +1,11 @@
 <?php
+    //se freceber algo do submit
     if(isset($_POST['submit']))
-    {
+    {   
+        //faz referencia ao config
         include_once('config.php');
 
-             
+        //armazena os valoras dos formularios em variaveis
         $nome  = $_POST['text'];
         $cpf = $_POST['cpf'];
         $dataNasc = $_POST['data'];
@@ -11,7 +13,8 @@
         $SEXO = $_POST['sexo'];
         $telefone = $_POST['tel'];
         $minhasenha = MD5($_POST['password']);
-
+        
+        //insere no bd
         $result = mysqli_query($conexao, "INSERT INTO cliente(Nome,CPF,Data_nascimento,Email,Sexo,Telefone,Senha) VALUES ('$nome','$cpf','$dataNasc','$email','$SEXO','$telefone','$minhasenha')");
     }
 ?>
@@ -49,7 +52,7 @@
                 </div>
 
                 <div class="containerInputs">
-                    <form action="telaRegistro.php" method="POST" class="clienteDados" name="clienteForm">
+                    <form action="telaRegistro.php"  method="POST" class="clienteDados" name="clienteForm">
                         <input 
                             type="text" 
                             name="text" 
@@ -108,7 +111,11 @@
                         > 
 
                         <div  class="botaoLogin">
-                            <button type="submit" name="submit" onclick="createCliente()">ir para tela de login</button>
+                            <button type="submit" name="submit" onclick="createCliente()"> Criar Usuario</button>
+                        </div>
+
+                        <div  class="botaoLogin">
+                            <button> <a href="telaLogin.php">Ir para o login</a></button>
                         </div>
                     </form>
 
@@ -159,6 +166,7 @@
                         <div  class="botaoLogin">
                             <button type="submit" name="submit" onclick="createOrganizador()">ir para tela de login</button>
                         </div>
+                        
                         
                     </form>
 
@@ -291,8 +299,9 @@
     }
 
     form .botaoLogin{
-        margin-top: 5%;
-        margin-bottom: 5%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        
     }
 
     form .botaoLogin button{
@@ -458,6 +467,7 @@
             alert('Confirmar senha tem que conter a mesma senha');
             return
         }
+        
     }
 
     function createOrganizador(){

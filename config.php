@@ -6,7 +6,7 @@
     $dbUsername = 'root';
     $dbPassword = "";
     //pega o nome do bd criado
-    $dbName = 'festivity';
+    $dbName = 'festivity2';
 
     //cria a variavel de conexão
     $conexao = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName);
