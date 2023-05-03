@@ -1,7 +1,8 @@
 <?php
     //inicia a sessão
     session_start();
-    
+    include_once('config.php');
+
 
     //verifica se esxiste uma variavel email na sua sessão
     if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['password']) == true))
@@ -13,6 +14,8 @@
     }
     //caso exista cria a variavel logado e passa o valor do input de email para ela
     $logado = $_SESSION['email'];
+
+
 ?>
 
 
@@ -32,8 +35,11 @@
                 <a href="/festivity/Home.php">
                     <p>Home</p>
                 </a>
-                <a href="../Telas/CadastroEvento.html">
+                <a href="CadastroEvento.php">
                     <p>Cadastre um evento</p>
+                </a>
+                <a href="MeusEventos.php">
+                    <p>Meus Eventos</p>
                 </a>
 
                 <div class="sectionLoginSearch">
@@ -64,7 +70,7 @@
                 <p>Dia e hora: Ainda não defenida</p>
             </div>
             <div class="butomsAnuncio">
-                <button class="original-button"><a href="./Compra_de_Ingrssos_TRAP.html">Comprar</a></button>
+                <button class="original-button"><a href="./Compra_de_Ingrssos_TRAP.php">Comprar</a></button>
             </div>
         </div>
         <div class="anuncioEvento">
@@ -76,7 +82,7 @@
             </div>
             <div class="butomsAnuncio coldplay">
                 <div class="butomsAnuncio">
-                    <button class="original-button"><a href="./Compra_de_Ingrssos_COLDPLAY.html">Comprar</a></button>
+                    <button class="original-button"><a href="./Compra_de_Ingrssos_COLDPLAY.php">Comprar</a></button>
                 </div>
             </div>
         </div>
@@ -91,7 +97,7 @@
             </div>
             <div class="butomsAnuncio">
                 <div class="butomsAnuncio">
-                    <button class="original-button"><a href="./Compra_de_Ingrssos_COUNTRY.html">Comprar</a></button>
+                    <button class="original-button"><a href="./Compra_de_Ingrssos_COUNTRY.php">Comprar</a></button>
                 </div>
             </div>
         </div>
@@ -104,7 +110,7 @@
             </div>
             <div class="butomsAnuncio">
                 <div class="butomsAnuncio">
-                    <button class="original-button"><a href="./Compra_de_Ingrssos_ROCK.html">Comprar</a></button>
+                    <button class="original-button"><a href="./Compra_de_Ingrssos_ROCK.php">Comprar</a></button>
                 </div>
             </div>
         </div>

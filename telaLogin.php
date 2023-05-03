@@ -55,6 +55,10 @@
                         <div  class="botaoLogin">
                             <input class="inputSubmit" type="submit" name="submit" value="Enviar" onclick="logarCliente()">
                         </div>
+                        <div  class="botaoLogin">
+                            <button type="submit" name="submitOrg" ><a href="./telaRegistro.php">Registrar Usuario</a> </button>
+                            
+                        </div>
                     </form>
 
                     <form class="orgForm hidden" name="organizadorForm">
@@ -75,6 +79,11 @@
 
                         <div  class="botaoLogin">
                             <button type="submit" onclick="logarOrganizador()">Logar</button>
+                        </div>
+
+                        <div class="botaoLogin">
+                            <button type="submit" name="submitOrg">Registrar Usuario</button>
+                            
                         </div>
                     </form>
 
