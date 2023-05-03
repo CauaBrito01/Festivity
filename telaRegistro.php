@@ -1,22 +1,43 @@
 <?php
-    //se freceber algo do submit
-    if(isset($_POST['submit']))
-    {   
-        //faz referencia ao config
-        include_once('config.php');
+    //$nomeCliente        = $_POST['text'];
+    //$nomeOrganizador    = $_POST['nomeOrganizador'];
+    if(isset($_POST['nomeOrganizador'])){
+        if(isset($_POST['submitOrg']))
+        {   
+            //faz referencia ao config
+            include_once('config.php');
 
-        //armazena os valoras dos formularios em variaveis
-        $nome  = $_POST['text'];
-        $cpf = $_POST['cpf'];
-        $dataNasc = $_POST['data'];
-        $email = $_POST['email'];
-        $SEXO = $_POST['sexo'];
-        $telefone = $_POST['tel'];
-        $minhasenha = MD5($_POST['password']);
-        
-        //insere no bd
-        $result = mysqli_query($conexao, "INSERT INTO cliente(Nome,CPF,Data_nascimento,Email,Sexo,Telefone,Senha) VALUES ('$nome','$cpf','$dataNasc','$email','$SEXO','$telefone','$minhasenha')");
+            //armazena os valoras dos formularios em variaveis
+            $nomeOrganizador = $_POST['nomeOrganizador'];
+            $cnpj = $_POST['cnpj'];
+            $emailOrganizador = $_POST['emailOrganizador'];
+            $telOrganizador = $_POST['telOrganizador'];
+            $senhaOrganizador = MD5($_POST['senhaOrganizador']);
+            
+            //insere no bd
+            $result = mysqli_query($conexao, "INSERT INTO ORGANIZADOR(NOME_ORGANIZADOR,CNPJ,EMAIL_ORGANIZADOR,TELEFONE_ORGANIZADOR,SENHA_ORGANIZADOR) VALUES ('$nomeOrganizador','$cnpj','$emailOrganizador','$telOrganizador','$senhaOrganizador')");
+        }
+    }else{
+        //se freceber algo do submit
+        if(isset($_POST['submit']))
+        {   
+            //faz referencia ao config
+            include_once('config.php');
+
+            //armazena os valoras dos formularios em variaveis
+            $nome  = $_POST['text'];
+            $cpf = $_POST['cpf'];
+            $dataNasc = $_POST['data'];
+            $email = $_POST['email'];
+            $SEXO = $_POST['sexo'];
+            $telefone = $_POST['tel'];
+            $minhasenha = MD5($_POST['password']);
+            
+            //insere no bd
+            $result = mysqli_query($conexao, "INSERT INTO CLIENTE(NOME_CLIENTE,CPF,DATA_NASCIMENTO,EMAIL_CLIENTE,SEXO,TELEFONE_CLIENTE,SENHA_CLIENTE) VALUES ('$nome','$cpf','$dataNasc','$email','$SEXO','$telefone','$minhasenha')");
+        }
     }
+    
 ?>
 
 <!DOCTYPE html>
@@ -120,7 +141,7 @@
                     </form>
 
 
-                    <form class="clienteDados hidden" name="organizadorForm">
+                    <form action="telaRegistro.php"  method="POST" class="clienteDados hidden" name="organizadorForm">
                         
                         <input 
                             type="text" 
@@ -164,7 +185,7 @@
                         > 
 
                         <div  class="botaoLogin">
-                            <button type="submit" name="submit" onclick="createOrganizador()">ir para tela de login</button>
+                            <button type="submit" name="submitOrg" onclick="createOrganizador()">ir para tela de login</button>
                         </div>
                         
                         
@@ -479,7 +500,7 @@
 
         if (!regexCpf.test(cnpj.value)) {
             event.preventDefault();
-            alert('O cpf inserido é invalido, exemplo de cnpj válido: 131.656.739-77');
+            alert('O CNPJ inserido é invalido, exemplo de CNPJ válido: 131.656.739-77');
             return
         }
 
