@@ -1,40 +1,42 @@
 <?php
-    //$nomeCliente        = $_POST['text'];
-    //$nomeOrganizador    = $_POST['nomeOrganizador'];
-    if(isset($_POST['nomeOrganizador'])){
-        if(isset($_POST['submitOrg']))
-        {   
-            //faz referencia ao config
-            include_once('config.php');
 
-            //armazena os valoras dos formularios em variaveis
-            $nomeOrganizador = $_POST['nomeOrganizador'];
-            $cnpj = $_POST['cnpj'];
-            
-            //insere no bd
-            $result = mysqli_query($conexao, "INSERT INTO organizador(Nome,CNPJ) VALUES ('$nomeOrganizador','$cnpj')");
-        }
-    }
-    else{
-        //se freceber algo do submit
-        if(isset($_POST['submit']))
-        {   
-            //faz referencia ao config
-            include_once('config.php');
+    if(!empty($_GET['id']))
+    {   
+        //faz referencia ao config
+        include_once('config.php');
 
-            //armazena os valoras dos formularios em variaveis
-            $nome  = $_POST['text'];
-            $cpf = $_POST['cpf'];
-            $dataNasc = $_POST['data'];
-            $email = $_POST['email'];
-            $SEXO = $_POST['sexo'];
-            $telefone = $_POST['tel'];
-            $minhasenha = MD5($_POST['password']);
-            
-            //insere no bd
-            $result = mysqli_query($conexao, "INSERT INTO cliente(Nome,CPF,Data_nascimento,Email,SEXO,Telefone,Senha) VALUES ('$nome','$cpf','$dataNasc','$email','$SEXO','$telefone','$minhasenha')");
+        $id = $_GET['id'];
+
+        $sqlSelect = "SELECT * FROM cliente WHERE Id_cliente = $id";
+
+        $result = $conexao->query($sqlSelect);
+
+        if($result->num_rows > 0){
+
+            while($user_data = mysqli_fetch_assoc($result))
+            {
+            $nome  = $user_data['Nome'];
+            $cpf = $user_data['CPF'];
+            $dataNasc = $user_data['Data_nascimento'];
+            $email = $user_data['Email'];
+            $SEXO = $user_data['Sexo'];
+            $telefone = $user_data['Telefone'];
+            $minhasenha = $user_data['Senha'];
+            }
+
         }
+
+
+        else{
+            header('Location: gerenciarUsuario.php');
+        }
+
+       
+        
+        //insere no bd
+        $result = mysqli_query($conexao, "INSERT INTO cliente(Nome,CPF,Data_nascimento,Email,SEXO,Telefone,Senha) VALUES ('$nome','$cpf','$dataNasc','$email','$SEXO','$telefone','$minhasenha')");
     }
+
     
 ?>
 
@@ -50,10 +52,6 @@
 <body>
     
     <main>
-
-        <section class="gifContainer">
-            <img src="./images/party.gif">
-        </section>
 
         <section class="blocoFormularios">
 
@@ -71,42 +69,40 @@
                 </div>
 
                 <div class="containerInputs">
-                    <form action="telaRegistro.php"  method="POST" class="clienteDados" name="clienteForm">
-                        <input 
+                    <form action="saveEdit.php"  method="POST" class="clienteDados" name="clienteForm">
+                        <input
+                            value=<?php echo $nome;?>
                             type="text" 
                             name="text" 
                             placeholder="insira seu nome completo"                                
                         > 
 
-                        <input 
+                        <input
+                            value=<?php echo $cpf;?>
                             type="text" 
                             name="cpf" 
                             placeholder="insira seu cpf"                                
                         > 
 
-                        <input 
+                        <input
+                            value=<?php echo $dataNasc;?>
                             type="date" 
                             name="data" 
                         >
 
-                        <input 
+                        <input
+                            value=<?php echo $email;?>
                             type="email" 
                             name="email" 
                             placeholder="example@example.com" 
                             title="formato do email:example@example.com"
                         > 
 
-                    <div class="containerSexo">
-                        <label>Escolha seu sexo</label>
-                        <select name = "sexo">
-                            <option value = "M">Masculino</option>
-                            <option value = "F">Feminino </option>
-                            <option value = "O">Outro</option>
-                        </select>
-                    </div>
+                    
                     
 
-                        <input 
+                        <input
+                            value=<?php echo $telefone;?>
                             type="tel" 
                             name="tel" 
                             placeholder="insira seu telefone"
@@ -114,8 +110,9 @@
                             title="insira seu telefone"
                         > 
 
-                        <input 
-                            type="password" 
+                        <input
+                            value=<?php echo $minhasenha;?>
+                            type="text" 
                             name="password" 
                             placeholder="senha"                         
                             title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
@@ -123,17 +120,17 @@
 
              
                         <input 
-                            type="password" 
+                            type="text" 
                             name="confirmarSenha" 
                             placeholder="confirme sua senha"
                             title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
                         > 
-
+                        <input type="hidden" name="id" value=<?php echo $id;?>>
+                        
                         <div  class="botaoLogin">
-                            <button type="submit" name="submit" onclick="createCliente()"> Criar Usuario</button>
-
-                            <button> <a href="telaLogin.php">Ir para o login</a></button>
+                            <button type="submit" name="update" id="update" onclick="createCliente()"> Editar Usuario</button>
                         </div>
+
                         
                     </form>
 
@@ -182,10 +179,13 @@
                         > 
 
                         <div  class="botaoLogin">
-                            <button type="submit" name="submit" onclick="createOrganizador()"> Criar Usuario</button>
-
+                            <button type="submit" name="submitOrg" onclick="createOrganizador()">Criar Organizador</button>
+                            
+                        </div>
+                        <div  class="botaoLogin">
                             <button> <a href="telaLogin.php">Ir para o login</a></button>
                         </div>
+                        
                         
                     </form>
 
@@ -213,11 +213,6 @@
         --cinzaClaro: #222327;
         --white: #f1efef;
         --vermelho: #bb432c;
-    }
-
-    a {
-        text-decoration: none;
-        color: var(--vermelho);
     }
 
     .hidden{
@@ -298,33 +293,6 @@
         font-size: 12px;
         color: #333;
     }
-
-    form .botaoLogin {
-        margin-top: 5%;
-        margin-bottom: 5%;
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    form .botaoLogin button{
-        color: var(--vermelho);
-        border: none;
-        border-radius: 4px;
-        padding: 12px 24px;
-        font-size: 16px;
-        cursor: pointer;
-        background-color: var(--cinzaClaro);
-        transition: all 0.3s ease-in-out;
-        border: 2px solid var(--vermelho);
-        margin-top: 5%;
-    }
-
-    form .botaoLogin button:hover{
-        background-color: var(--vermelho);
-        color: var(--white);
-    }
-
 
     form .containerSexo{
         display: flex;
@@ -431,7 +399,6 @@
     
     //regex expressoes
 
-    const regexCnpj = /^(\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2})|(\d{14})$/;
     const regexNome = /^[a-zA-Z]+\s+[a-zA-Z]+(\s+[a-zA-Z]+)*$/;
     const regexCpf = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
     const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -462,40 +429,26 @@
         orgForm.classList.remove("hidden");
     }
 
-    function validateDate(dateStr){
-        const parts = dateStr.split('-');
-        const year = parts[0];
+    function verificaData(dataStr) {
 
-        const numberYear = Number(year);
-
-        if(numberYear == undefined){
-            event.preventDefault();
-            alert('A data inserida é invalidada');
-            return
-        }
-
-        if(numberYear == null){
-            event.preventDefault();
-            alert('A data inserida é invalidada');
-            return
-        }
-
+        const [dia, mes, ano] = dataStr.split('-');
         
+        const dataEnviada = new Date(`${ano}-${mes}-${dia}`);
 
-        if(numberYear > 2013){
-            event.preventDefault();
-            alert('data inserida menor do que a correta');
-            return
-        }
+        const dataMinima = new Date();
         
+        dataMinima.setFullYear(dataMinima.getFullYear() - 10);
+        
+        alert('data enviada:' + dataEnviada);
+        alert('data minima:' + dataMinima);
+        
+        if(dataEnviada < dataMinima){
+            alert('Data iinvalida');
+        }
+
     }
-
-  
     
     function createCliente(){
-
-        validateDate(data.value);
-
         if (!regexNome.test(nome.value)) {
             event.preventDefault();
             alert('O nome inserido é inválido, exeplo de nome valido: Kaua da silva');
@@ -516,23 +469,23 @@
 
         if (!regexCel.test(cel.value)) {
             event.preventDefault();
-            alert('O telefone inserido é invalido, exemplo de telefone válido: 41995059834');
+            alert('O telefone inserido é invalido, exemplo de telefone válido: 41 995059834');
             return
         }
 
-        if (!regexSenha.test(senha.value)) {
+        if (!regexSenha.test(senha.value) || !confirmarSenha.test(senha.value)) {
             event.preventDefault();
             alert('A senha inserida é fraca, insira uma senha com 1 letra maiscula, 1 numero e com pelo menos 8 caracteres');
             return
         }
 
-        if (senha.value != confirmarSenha.value) {
+        alert(senha)
+        alert(confirmarSenha)
+        if (senha != confirmarSenha) {
             event.preventDefault();
             alert('Confirmar senha tem que conter a mesma senha');
             return
         }
-
-        
         
     }
 
@@ -543,9 +496,9 @@
             return
         }
 
-        if (!regexCnpj.test(cnpj.value)) {
+        if (!regexCpf.test(cnpj.value)) {
             event.preventDefault();
-            alert('O cpnj inserido é invalido, exemplo valido: XX.XXX.XXX/XXXX-XX');
+            alert('O CNPJ inserido é invalido, exemplo de CNPJ válido: 131.656.739-77');
             return
         }
 
@@ -557,7 +510,7 @@
 
         if (!regexCel.test(telOrganizador.value)) {
             event.preventDefault();
-            alert('O telefone inserido é invalido, exemplo de telefone válido: 41995059834');
+            alert('O telefone inserido é invalido, exemplo de telefone válido: 41 995059834');
             return
         }
 

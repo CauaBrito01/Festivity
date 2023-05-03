@@ -13,14 +13,13 @@
         
         //cira variaveis e as preenche com os valores dos inputs
         $email =$_POST['email'];
-        $minhasenha =$_POST['password'];
+        $minhasenha = MD5($_POST['password']);
 
         //verifica se os oarametros existem no bd
         $sql = "SELECT * FROM cliente WHERE Email = '$email' and Senha = '$minhasenha'";
         
         //chama a conexão q foi definida em config e realiza a query
         $result = $conexao->query($sql);
-
         //verifica se os numero de linhas encontradas no bd com o email e a senha é exstente ou não
         if(mysqli_num_rows($result) < 1)
         {
