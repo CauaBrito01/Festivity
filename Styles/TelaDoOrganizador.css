@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css?family=Helvetica+Neue');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+:root {
+    --cinzaEscuro: #16171b;
+    --cinzaClaro: #222327;
+    --white: #f1efef;
+    --vermelho: #bb432c;
+}
+
+/* header inicio */
+
+header .logo img{
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    z-index: 99;
+}
+.bodyID{
+    background-color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.headerID{
+    width: 88%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+header .sectionHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+header .headerOptions{
+    display: flex;
+    align-items: center;
+}
+
+.headerOptions a{
+    margin-left: 20px;
+}
+
+.headerOptions a p{
+    color: #b6b6b6;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.headerOptions a p:hover{
+    color: #cfcfcf;
+}
+
+.headerID {
+    width: 100% !important;
+}
+
+.headerOptions{
+    margin-right:5%;
+}
+
+.sectionLoginSearch{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 4vw;
+}
+
+.loginEcadastro{
+    display: flex;
+}
+
+.loginEcadastro a{
+    background-color: red;
+    padding: 8px 16px;
+    border-radius: 3px;
+}
+
+.loginEcadastro a p{
+    color: white;
+}
+
+.loginEcadastro a:hover{
+    background-color: rgb(255, 24, 24);
+}
+
+.cadastro{
+    margin-left: 20px;
+}
+
+
+
+
+/* header fim */
+
+body{
+    background-color: var(--cinzaEscuro);
+}
+
+header{
+    margin-bottom:10%;
+    background-color:var(--cinzaClaro);
+    width:100%;
+}
+
+.container {
+    display:flex;
+    justify-content:start;
+    align-center:center;
+    width:100%;
+}
+
+.inputs h2{
+    color:red;
+    font-weight:900;
+    text-align:center;
+    margin-bottom:10%;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.editarDadosCampos label {
+    margin-bottom:10px;
+    margin-top:10px;
+    color: var(--vermelho);
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.editarDadosCampos {
+    display:flex;
+    flex-direction:column;
+    width: 500px;
+}
+
+form input{
+    width: 100%;
+    margin-top: 5%;
+    border: none;
+    color: var(--white);
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    height: 20px;
+    font-size: 16px;
+    background-color: var(--cinzaClaro);
+    margin-bottom:3%;
+} 
+
+form  input::placeholder {
+    color: #999;
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+form input:focus::placeholder {
+    top: -20px;
+    font-size: 12px;
+    color: #333;
+}
+
+
+input[readonly] {
+    background:none;
+}
+
+footer{
+    margin-top: 10%;
+}
+
+.containerImage {
+    width: 50%;
+    display:flex;
+    justify-content:center;
+}
+
+.containerImage img{
+    width:80%;
+    height:80%;
+    margin-top:10%;
+    margin-left:10%;
+}
+
+.inputs {
+    margin-left: 5%;
+}
+
+
+
+@media screen and (max-width:500px){
+    
+    form input {
+        width: 90%;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .editarDadosCampos {
+        width: 100%;
+    }
+
+    .loginEcadastro a {
+        padding: 5px 5px;
+    }
+
+    header .logo img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .headerOptions a {
+        margin-left: 8px;
+    }
+
+    .headerOptions a p {
+        font-size: 10px;
+    }
+
+    .sectionLoginSearch {
+        margin-left: 0vw;
+    }
+
+    .headerOptions {
+        margin-right: 2%;
+    }
+
+    .footerInformation p {
+        font-size: 10px;
+    }
+
+    .containerImage img {
+        display: none;
+    }
+}
+
+
+form button{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+form button{
+    color: var(--vermelho);
+    border: none;
+    border-radius: 4px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--cinzaClaro);
+    transition: all 0.3s ease-in-out;
+    border: 2px solid var(--vermelho);
+}
+
+form button:hover{
+    background-color: var(--vermelho);
+    color: var(--white);
+}
+
+.buttonContainer{
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+}
