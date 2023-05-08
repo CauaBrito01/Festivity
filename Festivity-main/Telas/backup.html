@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../Styles/registerAcount.css" media="screen" /> 
+    <title>Festivity</title>
+    <link rel="icon" href="./imagens/event.png" type="image/png">
+</head>
+<body>
+    
+    <div class="containerBody">
+
+        <section  name="formularios" class="formularios">
+
+            <div class="container">
+    
+                <div class="containerText">
+    
+                    <p>Para criar sua conta</p>
+                    <p>Insira seus dados conforme os campos abaixo:</p>
+            
+                </div>
+        
+        
+                <div class="containerInputs">
+                    <form>
+                        <div  class="containerNome">
+                            <!-- <label>Insira seu Nome:</label> -->
+                            <br>
+                            <input 
+                                type="text" 
+                                name="text" 
+                                placeholder="insira seu nome"
+                                pattern=".{3,}"
+                                required
+                                title="exemplo de nome: Carlos Eduardo"
+                            > 
+                        </div>
+
+                        <div  class="containerCpf">
+                            <!-- <label>Insira seu cpf:</label> -->
+                            <br>
+                            <input 
+                                type="text" 
+                                name="cpf" 
+                                placeholder="insira seu cpf"
+                                pattern="(^\d{3}\x2E\d{3}\x2E\d{3}\x2D\d{2}$)" 
+                                required
+                                title="(XXX.XXX.XXX-XX)."
+                            > 
+                        </div>
+
+                        <div  class="containerData">
+                            <!-- <label>Insira a data de seu nascimento:</label> -->
+                            <br>
+                            <input 
+                                type="text" 
+                                name="endereço" 
+                                placeholder="insira seu endereço"
+                                pattern="/^[a-zA-Z0-9\s-,#]+$/"
+                                required
+                                title="coloque seu endereço"
+                            > 
+                        </div>
+
+                        <div class="containerEmail">
+                            <label>Insira seu email:</label>
+                            <br>
+                            <input 
+                                type="email" 
+                                name="email" 
+                                placeholder="example@example.com" 
+                                pattern="[a-zA-Z0-9._%+-]+@gmail.com"
+                                required
+                                title="formato do email:example@example.com"
+                            > 
+                        </div>
+
+                        <div  class="containerNome">
+                            <select required>
+                                <option>Masculino</option>
+                                <option>Feminino</option>
+                                <option>Outros</option>
+                            </select>
+                        </div>
+
+                        <div  class="containerCel">
+                            <br>
+                            <input 
+                                type="tel" 
+                                name="tel" 
+                                placeholder="insira seu telefone"
+                                pattern="[0-9]{11}"
+                                required
+                                title="insira seu telefone"
+                            > 
+                        </div>
+
+                        <div  class="containerSenha">
+                            <label>Insira sua senha:</label>
+                            <br>
+                            <input 
+                                type="password" 
+                                name="password" 
+                                placeholder="senha"
+                                pattern="(?=.*\d)(?=.*[!@#$%^&*()]).{8,}" 
+                                required
+                                title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
+                            > 
+                        </div>
+
+                        <div  class="containerSenha">
+                            <label>Confirme sua senha:</label>
+                            <br>
+                            <input 
+                                type="password" 
+                                name="password" 
+                                placeholder="confirme sua senha"
+                                pattern="(?=.*\d)(?=.*[!@#$%^&*()]).{8,}" 
+                                required
+                                title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
+                            > 
+                        </div>
+
+                        <div  class="botaoLogin">
+                            <button type="button"><a href="./Home.html">Logar</a></button>
+                        </div>
+                        
+                    </div>
+    
+                    </form>
+        
+            
+        
+                <br>
+                <br>
+                <br>
+    
+            </div>
+    
+        </section>
+
+    </div>
+
+
+    <script>
+
+        const email = "example@example.com";
+        const regex = /^\S+@\S+\.\S+$/;
+
+        if (regex.test(email)) {
+            console.log("Email válido");
+        } else {
+            console.log("Email inválido");
+        }
+
+    </script>
+</body>
+</html>

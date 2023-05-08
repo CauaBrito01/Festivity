@@ -1,0 +1,220 @@
+:root {
+    --cinzaEscuro: #16171b;
+    --cinzaClaro: #222327;
+    --white:#f1efef;
+    --vermelho: #bb432c;
+}
+
+body {
+    background-color:var(--cinzaEscuro);
+}
+
+input{
+    background:none !important;
+    border: 1px solid var(--vermelho) !important;
+    box-shadow: 1px 4px 10px 1px var(--vermelho);
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.main-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.img-aside{
+    margin: 5rem;
+    height: 890px;
+    width: 400px;
+}
+
+.dados_conatiner{
+    width: 70%;
+}
+
+.titulo_cadastro{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-weight: bold;
+    border-bottom: 2px solid var(--vermelho);
+    padding-bottom: 3rem;
+    width: 100%
+}
+
+
+.secao1{
+    border-bottom: 2px solid var(--vermelho);
+    padding-bottom: 3rem;
+    width: 100%;
+}
+
+.secao_registro{
+    margin-top: 2rem;
+    color: black;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 2rem;
+    color: var(--white);
+}
+
+.campo_registro{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 18px;
+    color: var(--white);
+    margin-left: 3%;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+
+.input_nome_evento{
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    color: #565656;
+    font-size: 14px;
+    transition: background-color 0.3s ease 0s;
+    padding-right: 0 !important;
+    padding: 7px 12px;
+    height: 25px;
+    width: 100%;
+}
+
+.input_desc_evento{
+    text-align: start;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    color: #565656;
+    font-size: 14px;
+    transition: background-color 0.3s ease 0s;
+    padding-right: 0 !important;
+    padding: 7px 12px;
+    height: 300px;
+    width: 100%;
+}
+
+.redes_sociais{
+    display: flex;
+    justify-content: space-between;
+}
+
+.input_redes_evento{
+    text-align: start;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    color: #565656;
+    font-size: 14px;
+    transition: background-color 0.3s ease 0s;
+    padding-right: 0 !important;
+    padding: 7px 12px;
+    height: 25px;
+    width: 40%;
+    margin-right: 1rem;
+}
+
+.secao2{
+    border-bottom: 2px solid var(--vermelho);
+    padding-bottom: 3rem;
+}
+
+.input_info_evento{
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    color: #565656;
+    font-size: 14px;
+    transition: background-color 0.3s ease 0s;
+    padding-right: 0 !important;
+    padding: 7px 12px;
+    height: 25px;
+    width: 100%;
+
+}
+
+.input_info_faixa_etaria{
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    color: #565656;
+    font-size: 14px;
+    transition: background-color 0.3s ease 0s;
+    padding-right: 0 !important;
+    padding: 7px 12px;
+    height: 25px;
+    width: 100%;
+    
+}
+
+.secao3{
+    border-bottom: 2px solid var(--vermelho);
+    padding-bottom: 3rem;
+}
+
+.secao4{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid var(--vermelho);
+    padding-bottom: 3rem;
+}
+
+input[type="file"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    margin: 1rem;
+  }
+  
+  label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+.botoes{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.containerForm {
+    display:flex;
+    justify-content:space-between;
+}
+
+button{
+    background:none;
+    border:1px solid var(--vermelho);
+    color:var(--vermelho);
+    width:100px;
+    height:50px;
+    border-radius:10px;
+    margin-top:5%;
+    margin-left:5%;
+}
+
+button:hover{
+    background-color:var(--vermelho);
+}
+
+button a:hover{
+    color:var(--white);
+}
+
+button a {
+    color: var(--vermelho);
+}

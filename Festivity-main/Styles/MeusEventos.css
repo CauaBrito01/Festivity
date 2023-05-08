@@ -1,0 +1,147 @@
+:root {
+    --cinzaEscuro: #16171b;
+    --cinzaClaro: #222327;
+    --white:#f1efef;
+    --vermelho: #bb432c;
+}
+
+body{
+    background-color: var(--cinzaEscuro);
+}
+
+h1{
+    color:var(--white);
+}
+
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainContainer{
+    width: 80%;
+    margin-top: 6rem;
+
+}
+
+.tituloMain{
+    color: #191919;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-weight: bold;
+    border-bottom: 2px solid lightgrey;
+    padding-bottom: 3rem;
+}
+
+.tituloEvento{
+    margin-top: 2rem;
+    color:var(--white);
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    font-weight: bold;
+}
+
+.eventoColdplay{
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    display: flex;
+    margin-top: 1.5rem;
+    box-shadow: 2px 5px 20px 5px var(--vermelho);
+    color: var(--white);
+    border-radius: 15px;
+    padding: 6px;
+    background-color:var (--cinzaClaro);
+}
+
+.linha1{
+    width: 100%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.linha1 p{
+    margin: 0.5rem;
+}
+
+.linha2{
+    width: 100%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.linha2 p{
+    margin: 0.5rem;
+}
+
+.linha3{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.organizadoraEvento{
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+}
+
+.img_logo_organizador_evento{
+    height: 65px;
+    width: 65px;
+    border-radius: 80px;
+    margin-right: 0.5rem;
+}
+
+.titulo_descricao{
+    text-transform: uppercase;
+    font-weight: 600;
+    color:var(--white);
+    font-size: 12px;
+    font-family: "Rubik";
+    font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.txt_descricao{font-size: 10px;}
+
+
+.butomsAnuncio{
+    display: flex;
+    justify-content: space-around;
+    margin: 0.8rem;
+}
+
+.original-button{
+    background:none;
+    border:1px solid var(--vermelho);
+    width:100px;
+    height:50px;
+    border-radius:10px;
+}
+
+.original-button:hover{
+    background-color:var(--vermelho);
+}
+
+.original-button a:hover{
+    color:var(--white);
+}
+
+.original-button a {
+    color: var(--vermelho);
+}
