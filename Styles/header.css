@@ -17,8 +17,7 @@ header .logo img{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 12px;
-    
+    padding-bottom: 10px;
 }
 .headerID{
     width: 88%;

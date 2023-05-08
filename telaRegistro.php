@@ -10,12 +10,14 @@
             //armazena os valoras dos formularios em variaveis
             $nomeOrganizador = $_POST['nomeOrganizador'];
             $cnpj = $_POST['cnpj'];
+            $emailOrganizador = $_POST['emailOrganizador'];
+            $telOrganizador = $_POST['telOrganizador'];
+            $senhaOrganizador = MD5($_POST['senhaOrganizador']);
             
             //insere no bd
-            $result = mysqli_query($conexao, "INSERT INTO organizador(Nome,CNPJ) VALUES ('$nomeOrganizador','$cnpj')");
+            $result = mysqli_query($conexao, "INSERT INTO ORGANIZADOR(NOME_ORGANIZADOR,CNPJ,EMAIL_ORGANIZADOR,TELEFONE_ORGANIZADOR,SENHA_ORGANIZADOR) VALUES ('$nomeOrganizador','$cnpj','$emailOrganizador','$telOrganizador','$senhaOrganizador')");
         }
-    }
-    else{
+    }else{
         //se freceber algo do submit
         if(isset($_POST['submit']))
         {   
@@ -32,7 +34,7 @@
             $minhasenha = MD5($_POST['password']);
             
             //insere no bd
-            $result = mysqli_query($conexao, "INSERT INTO cliente(Nome,CPF,Data_nascimento,Email,SEXO,Telefone,Senha) VALUES ('$nome','$cpf','$dataNasc','$email','$SEXO','$telefone','$minhasenha')");
+            $result = mysqli_query($conexao, "INSERT INTO CLIENTE(NOME_CLIENTE,CPF,DATA_NASCIMENTO,EMAIL_CLIENTE,SEXO,TELEFONE_CLIENTE,SENHA_CLIENTE) VALUES ('$nome','$cpf','$dataNasc','$email','$SEXO','$telefone','$minhasenha')");
         }
     }
     
@@ -183,11 +185,7 @@
                         > 
 
                         <div  class="botaoLogin">
-                            <button type="submit" name="submitOrg" onclick="createOrganizador()">Criar Organizador</button>
-                            
-                        </div>
-                        <div  class="botaoLogin">
-                            <button> <a href="telaLogin.php">Ir para o login</a></button>
+                            <button type="submit" name="submitOrg" onclick="createOrganizador()">ir para tela de login</button>
                         </div>
                         
                         

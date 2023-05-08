@@ -1,8 +1,7 @@
 <?php
     //inicia a sessão
     session_start();
-    include_once('config.php');
-
+    
 
     //verifica se esxiste uma variavel email na sua sessão
     if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['password']) == true))
@@ -14,8 +13,6 @@
     }
     //caso exista cria a variavel logado e passa o valor do input de email para ela
     $logado = $_SESSION['email'];
-
-
 ?>
 
 
