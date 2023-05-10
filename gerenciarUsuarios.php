@@ -6,7 +6,7 @@
     //caso exista cria a variavel logado e passa o valor do input de email para ela
     $logado = $_SESSION['email'];
 
-    $sql = "SELECT * FROM cliente ORDER BY Id_cliente ";
+    $sql = "SELECT * FROM cliente ORDER BY ID_CLIENTE ";
 
     $result = $conexao->query($sql);
 
@@ -47,8 +47,14 @@
                 <a href="/festivity/Home.php">
                     <p>Home</p>
                 </a>
-                <a href="../Telas/CadastroEvento.html">
+                <a href="CadastroEvento.php">
                     <p>Cadastre um evento</p>
+                </a>
+                <a href="GerenciarUsuarios.php">
+                    <p>Gerenciar Usuarios</p>
+                </a>
+                <a href="MeusEventos.php">
+                    <p>Meus Eventos</p>
                 </a>
 
                 <div class="sectionLoginSearch">
@@ -90,21 +96,21 @@
                 while($user_data = mysqli_fetch_assoc($result))
                 {
                     echo "<tr>";
-                        echo "<td>".$user_data['Id_cliente']."</td>";
-                        echo "<td>".$user_data['Nome']."</td>";
+                        echo "<td>".$user_data['ID_CLIENTE']."</td>";
+                        echo "<td>".$user_data['NOME_CLIENTE']."</td>";
                         echo "<td>".$user_data['CPF']."</td>";
-                        echo "<td>".$user_data['Senha']."</td>";
-                        echo "<td>".$user_data['Email']."</td>";
-                        echo "<td>".$user_data['Telefone']."</td>";
-                        echo "<td>".$user_data['Sexo']."</td>";
-                        echo "<td>".$user_data['Data_nascimento']."</td>";
+                        echo "<td>".$user_data['SENHA_CLIENTE']."</td>";
+                        echo "<td>".$user_data['EMAIL_CLIENTE']."</td>";
+                        echo "<td>".$user_data['TELEFONE_CLIENTE']."</td>";
+                        echo "<td>".$user_data['SEXO']."</td>";
+                        echo "<td>".$user_data['DATA_NASCIMENTO']."</td>";
                         echo "<td>
-                        <a class='btn btn-sm btn-primary' href='edit.php?id=$user_data[Id_cliente]'>
+                        <a class='btn btn-sm btn-primary' href='edit.php?id=$user_data[ID_CLIENTE]'>
                             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'>
                                 <path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/>
                             </svg>
                             </a> 
-                            <a class='btn btn-sm btn-danger' href='delete.php?id=$user_data[Id_cliente]' title='Deletar'>
+                            <a class='btn btn-sm btn-danger' href='delete.php?id=$user_data[ID_CLIENTE]' title='Deletar'>
                                 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
                                     <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/>
                                 </svg>
