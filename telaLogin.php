@@ -57,7 +57,7 @@
                         </div>
                     </form>
 
-                    <form class="orgForm hidden" name="organizadorForm">
+                    <form class="orgForm hidden" action="testLogin.php" method= "POST" name="organizadorForm">
                       
                         <input 
                             type="text" 
@@ -74,7 +74,7 @@
                         > 
 
                         <div  class="botaoLogin">
-                            <button type="submit" onclick="logarOrganizador()">Logar</button>
+                            <button type="submit"  name="submit" value="Enviar" onclick="logarOrganizador()">Logar</button>
                         </div>
                     </form>
 

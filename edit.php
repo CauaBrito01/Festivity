@@ -15,13 +15,13 @@
 
             while($user_data = mysqli_fetch_assoc($result))
             {
-            $nome  = $user_data['Nome'];
+            $nome  = $user_data['NOME_CLIENTE'];
             $cpf = $user_data['CPF'];
-            $dataNasc = $user_data['Data_nascimento'];
-            $email = $user_data['Email'];
-            $SEXO = $user_data['Sexo'];
-            $telefone = $user_data['Telefone'];
-            $minhasenha = $user_data['Senha'];
+            $dataNasc = $user_data['DATA_NASCIMENTO'];
+            $email = $user_data['EMAIL_CLIENTE'];
+            $SEXO = $user_data['SEXO'];
+            $telefone = $user_data['TELEFONE_CLIENTE'];
+            $minhasenha = $user_data['SENHA_CLIENTE'];
             }
 
         }
@@ -34,7 +34,12 @@
        
         
         //insere no bd
-        $result = mysqli_query($conexao, "INSERT INTO cliente(Nome,CPF,Data_nascimento,Email,SEXO,Telefone,Senha) VALUES ('$nome','$cpf','$dataNasc','$email','$SEXO','$telefone','$minhasenha')");
+
+        $sqlUpdate = "UPDATE cliente SET NOME_CLIENTE='$nome',SENHA_CLIENTE='$minhasenha',EMAIL_CLIENTE='$email',DATA_NASCIMENTO='$dataNasc',TELEFONE_CLIENTE='$telefone'
+        WHERE Id_cliente = '$id'";
+
+        $result = $conexao->query($sqlUpdate);
+
     }
 
     

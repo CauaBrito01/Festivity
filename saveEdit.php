@@ -10,8 +10,8 @@
             $telefone = $_POST['tel'];
             $minhasenha = $_POST['password'];
 
-
-        $sqlUpdate = "UPDATE cliente SET Nome='$nome',Senha='$minhasenha',Email='$email',Data_nascimento='$dataNasc',Telefone='$telefone'
+        
+        $sqlUpdate = "UPDATE cliente SET NOME_CLIENTE='$nome',SENHA_CLIENTE='$minhasenha',EMAIL_CLIENTE='$email',DATA_NASCIMENTO='$dataNasc',TELEFONE_CLIENTE='$telefone'
         WHERE Id_cliente = '$id'";
 
         $result = $conexao->query($sqlUpdate);

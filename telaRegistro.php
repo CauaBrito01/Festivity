@@ -185,7 +185,10 @@
                         > 
 
                         <div  class="botaoLogin">
-                            <button type="submit" name="submitOrg" onclick="createOrganizador()">ir para tela de login</button>
+                            <button type="submit" name="submitOrg" onclick="createOrganizador()">Criar Usuario</button>
+                        </div>
+                        <div  class="botaoLogin">
+                            <button> <a href="telaLogin.php">Ir para o login</a></button>
                         </div>
                         
                         
