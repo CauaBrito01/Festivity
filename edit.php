@@ -1,42 +1,47 @@
 <?php
-    //$nomeCliente        = $_POST['text'];
-    //$nomeOrganizador    = $_POST['nomeOrganizador'];
-    if(isset($_POST['nomeOrganizador'])){
-        if(isset($_POST['submitOrg']))
-        {   
-            //faz referencia ao config
-            include_once('config.php');
 
-            //armazena os valoras dos formularios em variaveis
-            $nomeOrganizador = $_POST['nomeOrganizador'];
-            $cnpj = $_POST['cnpj'];
-            $emailOrganizador = $_POST['emailOrganizador'];
-            $telOrganizador = $_POST['telOrganizador'];
-            $senhaOrganizador = MD5($_POST['senhaOrganizador']);
-            
-            //insere no bd
-            $result = mysqli_query($conexao, "INSERT INTO ORGANIZADOR(NOME_ORGANIZADOR,CNPJ,EMAIL_ORGANIZADOR,TELEFONE_ORGANIZADOR,SENHA_ORGANIZADOR) VALUES ('$nomeOrganizador','$cnpj','$emailOrganizador','$telOrganizador','$senhaOrganizador')");
-        }
-    }else{
-        //se freceber algo do submit
-        if(isset($_POST['submit']))
-        {   
-            //faz referencia ao config
-            include_once('config.php');
+    if(!empty($_GET['id']))
+    {   
+        //faz referencia ao config
+        include_once('config.php');
 
-            //armazena os valoras dos formularios em variaveis
-            $nome  = $_POST['text'];
-            $cpf = $_POST['cpf'];
-            $dataNasc = $_POST['data'];
-            $email = $_POST['email'];
-            $SEXO = $_POST['sexo'];
-            $telefone = $_POST['tel'];
-            $minhasenha = MD5($_POST['password']);
-            
-            //insere no bd
-            $result = mysqli_query($conexao, "INSERT INTO CLIENTE(NOME_CLIENTE,CPF,DATA_NASCIMENTO,EMAIL_CLIENTE,SEXO,TELEFONE_CLIENTE,SENHA_CLIENTE) VALUES ('$nome','$cpf','$dataNasc','$email','$SEXO','$telefone','$minhasenha')");
+        $id = $_GET['id'];
+
+        $sqlSelect = "SELECT * FROM cliente WHERE Id_cliente = $id";
+
+        $result = $conexao->query($sqlSelect);
+
+        if($result->num_rows > 0){
+
+            while($user_data = mysqli_fetch_assoc($result))
+            {
+            $nome  = $user_data['NOME_CLIENTE'];
+            $cpf = $user_data['CPF'];
+            $dataNasc = $user_data['DATA_NASCIMENTO'];
+            $email = $user_data['EMAIL_CLIENTE'];
+            $SEXO = $user_data['SEXO'];
+            $telefone = $user_data['TELEFONE_CLIENTE'];
+            $minhasenha = $user_data['SENHA_CLIENTE'];
+            }
+
         }
+
+
+        else{
+            header('Location: gerenciarUsuario.php');
+        }
+
+       
+        
+        //insere no bd
+
+        $sqlUpdate = "UPDATE cliente SET NOME_CLIENTE='$nome',SENHA_CLIENTE='$minhasenha',EMAIL_CLIENTE='$email',DATA_NASCIMENTO='$dataNasc',TELEFONE_CLIENTE='$telefone'
+        WHERE Id_cliente = '$id'";
+
+        $result = $conexao->query($sqlUpdate);
+
     }
+
     
 ?>
 
@@ -52,10 +57,6 @@
 <body>
     
     <main>
-
-        <section class="gifContainer">
-            <img src="./images/party.gif">
-        </section>
 
         <section class="blocoFormularios">
 
@@ -73,42 +74,40 @@
                 </div>
 
                 <div class="containerInputs">
-                    <form action="telaRegistro.php"  method="POST" class="clienteDados" name="clienteForm">
-                        <input 
+                    <form action="saveEdit.php"  method="POST" class="clienteDados" name="clienteForm">
+                        <input
+                            value=<?php echo $nome;?>
                             type="text" 
                             name="text" 
                             placeholder="insira seu nome completo"                                
                         > 
 
-                        <input 
+                        <input
+                            value=<?php echo $cpf;?>
                             type="text" 
                             name="cpf" 
                             placeholder="insira seu cpf"                                
                         > 
 
-                        <input 
+                        <input
+                            value=<?php echo $dataNasc;?>
                             type="date" 
                             name="data" 
                         >
 
-                        <input 
+                        <input
+                            value=<?php echo $email;?>
                             type="email" 
                             name="email" 
                             placeholder="example@example.com" 
                             title="formato do email:example@example.com"
                         > 
 
-                    <div class="containerSexo">
-                        <label>Escolha seu sexo</label>
-                        <select name = "sexo">
-                            <option value = "M">Masculino</option>
-                            <option value = "F">Feminino </option>
-                            <option value = "O">Outro</option>
-                        </select>
-                    </div>
+                    
                     
 
-                        <input 
+                        <input
+                            value=<?php echo $telefone;?>
                             type="tel" 
                             name="tel" 
                             placeholder="insira seu telefone"
@@ -116,8 +115,9 @@
                             title="insira seu telefone"
                         > 
 
-                        <input 
-                            type="password" 
+                        <input
+                            value=<?php echo $minhasenha;?>
+                            type="text" 
                             name="password" 
                             placeholder="senha"                         
                             title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
@@ -125,19 +125,18 @@
 
              
                         <input 
-                            type="password" 
+                            type="text" 
                             name="confirmarSenha" 
                             placeholder="confirme sua senha"
                             title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
                         > 
-
+                        <input type="hidden" name="id" value=<?php echo $id;?>>
+                        
                         <div  class="botaoLogin">
-                            <button type="submit" name="submit" onclick="createCliente()"> Criar Usuario</button>
+                            <button type="submit" name="update" id="update" onclick="createCliente()"> Editar Usuario</button>
                         </div>
 
-                        <div  class="botaoLogin">
-                            <button> <a href="telaLogin.php">Ir para o login</a></button>
-                        </div>
+                        
                     </form>
 
 
@@ -185,7 +184,8 @@
                         > 
 
                         <div  class="botaoLogin">
-                            <button type="submit" name="submitOrg" onclick="createOrganizador()">Criar Usuario</button>
+                            <button type="submit" name="submitOrg" onclick="createOrganizador()">Criar Organizador</button>
+                            
                         </div>
                         <div  class="botaoLogin">
                             <button> <a href="telaLogin.php">Ir para o login</a></button>
