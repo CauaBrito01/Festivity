@@ -3,17 +3,19 @@
     session_start();
     
 
+
     //verifica se esxiste uma variavel email na sua sessão
-    if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['password']) == true))
+    if((!isset($_SESSION['emailOrganizador']) == true) and (!isset($_SESSION['senhaOrganizador']) == true))
     {
         //caso não esxita te joga para o login e destroi os dados atuais
-        unset($_SESSION['email']);
-        unset($_SESSION['password']);
+        unset($_SESSION['emailOrganizador']);
+        unset($_SESSION['senhaOrganizador']);
         header('Location: telaLogin.php');
     }
     //caso exista cria a variavel logado e passa o valor do input de email para ela
-    $logado = $_SESSION['email'];
+    $logado = $_SESSION['emailOrganizador'];
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -33,9 +35,6 @@
                     <img src="./images/logo.png" alt="">
                 </div>
                 <div class="headerOptions">
-                    <a href="/festivity/Home.php">
-                        <p>Home</p>
-                    </a>
                     <a href="CadastroEvento.php">
                         <p>Cadastre um evento</p>
                     </a>

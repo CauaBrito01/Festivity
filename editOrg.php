@@ -1,5 +1,24 @@
 <?php
 
+
+    //inicia a sessão
+    session_start();
+
+
+
+    //verifica se esxiste uma variavel email na sua sessão
+    if((!isset($_SESSION['emailOrganizador']) == true) and (!isset($_SESSION['senhaOrganizador']) == true))
+    {
+        //caso não esxita te joga para o login e destroi os dados atuais
+        unset($_SESSION['emailOrganizador']);
+        unset($_SESSION['senhaOrganizador']);
+        header('Location: telaLogin.php');
+    }
+    //caso exista cria a variavel logado e passa o valor do input de email para ela
+    $logado = $_SESSION['emailOrganizador'];
+
+
+
     if(!empty($_GET['id']))
     {   
         //faz referencia ao config
@@ -7,7 +26,7 @@
 
         $id = $_GET['id'];
 
-        $sqlSelect = "SELECT * FROM cliente WHERE Id_cliente = $id";
+        $sqlSelect = "SELECT * FROM organizador WHERE ID_ORGANIZADOR = $id";
 
         $result = $conexao->query($sqlSelect);
 
@@ -15,13 +34,11 @@
 
             while($user_data = mysqli_fetch_assoc($result))
             {
-            $nome  = $user_data['NOME_CLIENTE'];
-            $cpf = $user_data['CPF'];
-            $dataNasc = $user_data['DATA_NASCIMENTO'];
-            $email = $user_data['EMAIL_CLIENTE'];
-            $SEXO = $user_data['SEXO'];
-            $telefone = $user_data['TELEFONE_CLIENTE'];
-            $minhasenha = $user_data['SENHA_CLIENTE'];
+            $nomeOrg  = $user_data['NOME_ORGANIZADOR'];
+            $cnpj = $user_data['CNPJ'];
+            $telefoneOrg = $user_data['TELEFONE_ORGANIZADOR'];
+            $emailOrg = $user_data['EMAIL_ORGANIZADOR'];
+            $senhaOrg = $user_data['SENHA_ORGANIZADOR'];
             }
 
         }
@@ -35,8 +52,8 @@
         
         //insere no bd
 
-        $sqlUpdate = "UPDATE cliente SET NOME_CLIENTE='$nome',SENHA_CLIENTE='$minhasenha',EMAIL_CLIENTE='$email',DATA_NASCIMENTO='$dataNasc',TELEFONE_CLIENTE='$telefone'
-        WHERE Id_cliente = '$id'";
+        $sqlUpdate = "UPDATE organizador SET NOME_ORGANIZADOR='$nomeOrg',SENHA_ORGANIZADOR='$senhaOrg',EMAIL_ORGANIZADOR='$emailOrg',TELEFONE_ORGANIZADOR='$telefoneOrg',CNPJ='$$cnpj'
+        WHERE ID_ORGANIZADOR = '$id'";
 
         $result = $conexao->query($sqlUpdate);
 
@@ -56,98 +73,123 @@
     <link rel="stylesheet" href="./Styles/reset.css">
     <link rel="stylesheet" href="./Styles/header.css">
     <link rel="stylesheet" href="./Styles/footer.css">
-    <link rel="stylesheet" href="./Styles/TelaDoOrganizador.css">
+    <link rel="stylesheet" href="./Styles/editOrg.css">
+
 </head>
 <body>
     
     <main>
-
-        <section class="blocoFormularios">
-
-                <div class="titulos">
-
-                    <p>Para criar sua conta</p>
-                    <p>Insira seus dados conforme os campos abaixo:</p>
-            
+    <section class="bodyID">
+        <header class="headerID">
+            <div class="sectionHeader">
+                <div class="logo">
+                    <img src="./images/logo.png" alt="">
                 </div>
+                <div class="headerOptions">
+                    <a href="CadastroEvento.php">
+                        <p>Cadastre um evento</p>
+                    </a>
+                    <a href="GerenciarUsuarios.php">
+                        <p>Gerenciar Usuarios</p>
+                    </a>
+                    <a href="MeusEventos.php">
+                    <p>Meus Eventos</p>
+                    </a>
 
-                <div class="tipoDeUsuario" name="tipoDeUsuario">
-                    <a name="cliente" class="ativo" onclick="selectTipoCliente()">cliente</a>
-                    <a>&nbsp;|&nbsp;</a>
-                    <a name="organizador" class="" onclick="selectTipoOrganizador()">Organizador</a>
+                    <div class="sectionLoginSearch">
+                        <div class="loginEcadastro">
+                            <div>
+                            <?php
+                                echo "<h1><u>$logado</u></h1>";
+                            ?>
+                            </div>
+                            <div class="sair">
+                                <a href="sair.php">SAIR</a>
+                            </div>
+                        </div>  
+                    </div>
+
+
                 </div>
+            </div>  
+        </header>   
+    </section>
 
-                <div class="containerInputs">
-                    <form action="saveEdit.php"  method="POST" class="clienteDados" name="clienteForm">
-                        <input
-                            value=<?php echo $nome;?>
+        <div class="container">
+            <div class="containerImage">
+                <image src="./images/OrganizadorImage.png">
+            </div>
+        
+
+            <div class="inputs">
+                <h2>Editar dados da Conta</h2>
+
+                <form class="editarDadosCampos" action="saveEdit.php"  method="POST" class="clienteDados" name="clienteForm">
+                    <input
+                        value=<?php echo $nomeOrg;?>
+                        type="text" 
+                        name="nomeOrg" 
+                        placeholder="insira seu nome completo"                                
+                    >
+
+                    <input
+                        value=<?php echo $emailOrg;?>
+                        type="email" 
+                        name="email" 
+                        placeholder="example@example.com" 
+                        title="formato do email:example@example.com"
+                    >
+
+
+                    <input
+                        value=<?php echo $senhaOrg;?>
+                        type="text" 
+                        name="password" 
+                        placeholder="senha"                         
+                        title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
+                    > 
+
+                    <input
+                        value=<?php echo $telefoneOrg;?>
+                        type="tel" 
+                        name="tel" 
+                        placeholder="insira seu telefone"
+                        title="insira seu telefone"
+                    >
+
+                    <input
+                            value=<?php echo $cnpj;?>
                             type="text" 
-                            name="text" 
-                            placeholder="insira seu nome completo"                                
-                        > 
-
-                        <input
-                            value=<?php echo $cpf;?>
-                            type="text" 
-                            name="cpf" 
-                            placeholder="insira seu cpf"                                
-                        > 
-
-                        <input
-                            value=<?php echo $dataNasc;?>
-                            type="date" 
-                            name="data" 
-                        >
-
-                        <input
-                            value=<?php echo $email;?>
-                            type="email" 
-                            name="email" 
-                            placeholder="example@example.com" 
-                            title="formato do email:example@example.com"
+                            name="cnpj" 
+                            placeholder="insira o cnpj da empresa" 
+                            title="insira seu cnpj"
+                               
                         > 
 
                     
+
+                    <input type="hidden" name="idOrg" value=<?php echo $id;?>>
+
+                    <div class="buttonContainer">
+
+                        <button type="submit" name="updateOrg" id="updateOrg" onclick="createCliente()"> Salvar Alterações</button>        
+                        <button>Excluir conta</button>
+                        
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+        
+
                     
-
-                        <input
-                            value=<?php echo $telefone;?>
-                            type="tel" 
-                            name="tel" 
-                            placeholder="insira seu telefone"
-                            
-                            title="insira seu telefone"
-                        > 
-
-                        <input
-                            value=<?php echo $minhasenha;?>
-                            type="text" 
-                            name="password" 
-                            placeholder="senha"                         
-                            title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
-                        > 
-
-             
-                        <input 
-                            type="text" 
-                            name="confirmarSenha" 
-                            placeholder="confirme sua senha"
-                            title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
-                        > 
-                        <input type="hidden" name="id" value=<?php echo $id;?>>
+                                   
                         
                         <div  class="botaoLogin">
-                            <button type="submit" name="update" id="update" onclick="createCliente()"> Editar Usuario</button>
+                            
                         </div>
 
-                        
-                    </form>
-
-
-                    
-
-                </div> 
-        </section>
 
     </main>
 

@@ -1,5 +1,18 @@
 <?php
+        //inicia a sessão
+    session_start();
+    
 
+    //verifica se esxiste uma variavel email na sua sessão
+    if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['password']) == true))
+    {
+        //caso não esxita te joga para o login e destroi os dados atuais
+        unset($_SESSION['email']);
+        unset($_SESSION['password']);
+        header('Location: telaLogin.php');
+    }
+    //caso exista cria a variavel logado e passa o valor do input de email para ela
+    $logado = $_SESSION['email'];
     if(!empty($_GET['id']))
     {   
         //faz referencia ao config
@@ -53,334 +66,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registre sua conta</title>
     <link rel="icon" href="./imagens/event.png" type="image/png">
+    <link rel="stylesheet" href="./Styles/edit.css">
+    <link rel="stylesheet" href="./Styles/header.css">
+'    <link rel="stylesheet" href="./Styles/reset.css">
+'
 </head>
 <body>
-    
-    <main>
+        <section class="bodyID">
+            <header class="headerID">
+                <div class="sectionHeader">
+                    <div class="logo">
+                        <img src="./images/logo.png" alt="">
+                    </div>
+                    <div class="headerOptions">
+                        <a href="CadastroEvento.php">
+                            <p>Cadastre um evento</p>
+                        </a>
+                        <a href="GerenciarUsuarios.php">
+                            <p>Gerenciar Usuarios</p>
+                        </a>
+                        <a href="MeusEventos.php">
+                        <p>Meus Eventos</p>
+                        </a>
 
-        <section class="blocoFormularios">
-
-                <div class="titulos">
-
-                    <p>Para criar sua conta</p>
-                    <p>Insira seus dados conforme os campos abaixo:</p>
-            
-                </div>
-
-                <div class="tipoDeUsuario" name="tipoDeUsuario">
-                    <a name="cliente" class="ativo" onclick="selectTipoCliente()">cliente</a>
-                    <a>&nbsp;|&nbsp;</a>
-                    <a name="organizador" class="" onclick="selectTipoOrganizador()">Organizador</a>
-                </div>
-
-                <div class="containerInputs">
-                    <form action="saveEdit.php"  method="POST" class="clienteDados" name="clienteForm">
-                        <input
-                            value=<?php echo $nome;?>
-                            type="text" 
-                            name="text" 
-                            placeholder="insira seu nome completo"                                
-                        > 
-
-                        <input
-                            value=<?php echo $cpf;?>
-                            type="text" 
-                            name="cpf" 
-                            placeholder="insira seu cpf"                                
-                        > 
-
-                        <input
-                            value=<?php echo $dataNasc;?>
-                            type="date" 
-                            name="data" 
-                        >
-
-                        <input
-                            value=<?php echo $email;?>
-                            type="email" 
-                            name="email" 
-                            placeholder="example@example.com" 
-                            title="formato do email:example@example.com"
-                        > 
-
-                    
-                    
-
-                        <input
-                            value=<?php echo $telefone;?>
-                            type="tel" 
-                            name="tel" 
-                            placeholder="insira seu telefone"
-                            
-                            title="insira seu telefone"
-                        > 
-
-                        <input
-                            value=<?php echo $minhasenha;?>
-                            type="text" 
-                            name="password" 
-                            placeholder="senha"                         
-                            title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
-                        > 
-
-             
-                        <input 
-                            type="text" 
-                            name="confirmarSenha" 
-                            placeholder="confirme sua senha"
-                            title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
-                        > 
-                        <input type="hidden" name="id" value=<?php echo $id;?>>
-                        
-                        <div  class="botaoLogin">
-                            <button type="submit" name="update" id="update" onclick="createCliente()"> Editar Usuario</button>
+                        <div class="sectionLoginSearch">
+                            <div class="loginEcadastro">
+                                <div>
+                                <?php
+                                    echo "<h1><u>$logado</u></h1>";
+                                ?>
+                                </div>
+                                <div class="sair">
+                                    <a href="sair.php">SAIR</a>
+                                </div>
+                            </div>  
                         </div>
 
-                        
-                    </form>
 
-
-                    <form action="telaRegistro.php"  method="POST" class="clienteDados hidden" name="organizadorForm">
-                        
-                        <input 
-                            type="text" 
-                            name="nomeOrganizador" 
-                            placeholder="insira o nome da impresa"                                
-                        > 
-
-                        <input 
-                            type="text" 
-                            name="cnpj" 
-                            placeholder="insira o cnpj da empresa"                                
-                        > 
-
-                        <input 
-                            type="email" 
-                            name="emailOrganizador" 
-                            placeholder="example@example.com" 
-                            title="formato do email:example@example.com"
-                        >                     
-
-                        <input 
-                            type="tel" 
-                            name="telOrganizador" 
-                            placeholder="insira seu telefone"              
-                            title="insira seu telefone"
-                        > 
-
-                        <input 
-                            type="password" 
-                            name="senhaOrganizador" 
-                            placeholder="senha"                         
-                            title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
-                        > 
-
-             
-                        <input 
-                            type="password" 
-                            name="confirmarSenhaOrganizador" 
-                            placeholder="confirme sua senha"
-                            title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
-                        > 
-
-                        <div  class="botaoLogin">
-                            <button type="submit" name="submitOrg" onclick="createOrganizador()">Criar Organizador</button>
-                            
-                        </div>
-                        <div  class="botaoLogin">
-                            <button> <a href="telaLogin.php">Ir para o login</a></button>
-                        </div>
-                        
-                        
-                    </form>
-
-                </div> 
+                    </div>
+                </div>  
+            </header>   
         </section>
 
-    </main>
+        <div class="container">
 
+            <div class="inputs">
+                <h2>Editar dados da Conta</h2>
+
+                <form class="editarDadosCampos" action="saveEdit.php"  method="POST" class="clienteDados" name="clienteForm">
+                    <label>Nome:</label>
+                    <input
+                        value=<?php echo $nome;?>
+                        type="text" 
+                        name="text" 
+                        placeholder="insira seu nome completo"                                
+                    >
+
+                    
+                    <label>Cpf</label>
+                    <input
+                        value=<?php echo $cpf;?>
+                        type="text" 
+                        name="cpf" 
+                        placeholder="insira seu cpf"                                
+                    > 
+
+                    <label>Data de nascimento</label>
+                    <input
+                        value=<?php echo $dataNasc;?>
+                        type="date" 
+                        name="data" 
+                    >
+
+                    <label>Email:</label>
+                    <input
+                        value=<?php echo $email;?>
+                        type="email" 
+                        name="email" 
+                        placeholder="example@example.com" 
+                        title="formato do email:example@example.com"
+                    >          
+
+                    <label>Cpf</label>
+                    <input
+                        value=<?php echo $telefone;?>
+                        type="tel" 
+                        name="tel" 
+                        placeholder="insira seu telefone"
+                        
+                        title="insira seu telefone"
+                    > 
+
+                    <label>Senha:</label>
+                    <input
+                        value=<?php echo $minhasenha;?>
+                        type="text" 
+                        name="password" 
+                        placeholder="senha"                         
+                        title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
+                    > 
+
+                        <input type="hidden" name="id" value=<?php echo $id;?>>
+
+                        <div class="buttonContainer">
+                        <button type="submit" name="update" id="update" onclick="createCliente()"> Salvar Alterações</button>
+            
+                            <button>Excluir conta</button>            
+                        </div>
+                </form>
+
+            </div>
+
+            <div class="containerImage">
+                <image src="./images/telaDePerfil-Imagem.png">
+            </div>
+
+        </div>
 </body>
 </html>
 
-<style>
 
-    @import url('https://fonts.googleapis.com/css?family=Helvetica+Neue');
-
-    *
-    {
-        margin: 0;
-        padding: 0;
-        font-family: 'Helvetica Neue', sans-serif;
-    }
-
-    :root {
-        --cinzaEscuro: #16171b;
-        --cinzaClaro: #222327;
-        --white: #f1efef;
-        --vermelho: #bb432c;
-    }
-
-    .hidden{
-        display: none;
-    }
-
-    main{
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background-color: var(--cinzaEscuro);
-    }
-
-    .blocoFormularios{
-        width: 400px;
-        background-color: var(--cinzaClaro);
-        border-radius: 10px;
-    }
-
-    .tipoDeUsuario{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        margin-top: 5%;
-        margin-bottom: 5%;
-    }
-    
-
-    .tipoDeUsuario a{
-        line-height:20px;
-        font-weight: bolder;
-        font-size: 15px;
-        color: var(--white);
-    }
-
-    .ativo {
-        color: blue !important;
-    }
-
-    .tipoDeUsuario a:hover{
-        cursor: pointer;
-        font-weight: lighter;
-    }
-
-    form{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    form input{
-        width: 50%;
-        margin-top: 5%;
-        border: none;
-        color: var(--white);
-        border-bottom: 1px solid #ccc;
-        outline: none;
-        height: 20px;
-        font-size: 16px;
-        background: none;
-    } 
-
-    form  input::placeholder {
-        color: #999;
-        font-size: 14px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transition: all 0.3s ease-in-out;
-    }
-
-    form input:focus::placeholder {
-        top: -20px;
-        font-size: 12px;
-        color: #333;
-    }
-
-    form .containerSexo{
-        display: flex;
-        flex-direction: column;
-        margin-top:5%;
-        width: 50%;
-    }
-
-    form .containerSexo label{
-        margin-bottom:5%;
-        text-align: left;
-        color: var(--white);
-    }
-
-    form .containerSexo select{
-        border: none;
-        border-radius: 4px;
-        font-size: 16px;
-        color: #333;
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: box-shadow 0.2s ease-in-out;
-    }
-
-    form .botaoLogin{
-        margin-top: 2%;
-        margin-bottom: 2%;
-        
-    }
-
-    form .botaoLogin button{
-        color: var(--vermelho);
-        border: none;
-        border-radius: 4px;
-        padding: 12px 24px;
-        font-size: 16px;
-        cursor: pointer;
-        background-color: var(--cinzaClaro);
-        transition: all 0.3s ease-in-out;
-        border: 2px solid var(--vermelho);
-    }
-
-    form .botaoLogin button:hover{
-        background-color: var(--vermelho);
-        color: var(--white);
-    }
-
-    .titulos{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top:5%;
-        margin-bottom:5%;
-    }
-
-    .titulos p{
-        line-height:20px;
-        font-weight: bolder;
-        font-size: 15px;
-        color: var(--vermelho);
-    }
-
-    @media screen and (max-width:1100px){
-        
-        main{
-            justify-content: center;
-            align-items: center;
-        }
-
-        .blocoFormularios {
-            margin-right: 0;
-            width:80%;
-        }
-
-        .gifContainer{
-            display: none;
-        }
- 
-    }
-
-</style>
 
 <script>
 

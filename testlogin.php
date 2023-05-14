@@ -51,7 +51,7 @@
 
     else{
         //confere se receu alguma coisa do submit e se os campos email e senha não estao vazios 
-        if(isset($_POST['submit']) && !empty($_POST['cnpj']) && !empty($_POST['senhaOrganizador']))
+        if(isset($_POST['submit']) && !empty($_POST['emailOrganizador']) && !empty($_POST['senhaOrganizador']))
         {
 
             //faz referencia ao config
@@ -59,11 +59,11 @@
             $minhasenha = MD5($_POST['senhaOrganizador']);
 
             //cira variaveis e as preenche com os valores dos inputs
-            $cnpj =$_POST['cnpj'];
+            $emailOrganizador =$_POST['emailOrganizador'];
             $minhasenha = MD5($_POST['senhaOrganizador']);
 
             //verifica se os oarametros existem no bd
-            $sql = "SELECT * FROM organizador WHERE CNPJ = '$cnpj' and SENHA_ORGANIZADOR = '$minhasenha'";
+            $sql = "SELECT * FROM organizador WHERE EMAIL_ORGANIZADOR = '$emailOrganizador' and SENHA_ORGANIZADOR = '$minhasenha'";
             
             //chama a conexão q foi definida em config e realiza a query
             $result = $conexao->query($sql);
@@ -77,14 +77,14 @@
             {
                 header('Location: telaLogin.php');
                 //se não existir ele da unset e some com os dados
-                unset($_SESSION['cnpj']);
+                unset($_SESSION['emailOrganizador']);
                 unset($_SESSION['senhaOrganizador']);
             }
             else
             {   
-                $_SESSION['cnpj'] = $cnpj;
+                $_SESSION['emailOrganizador'] = $emailOrganizador;
                 $_SESSION['senhaOrganizador'] = $minhasenha;
-                header('Location: Home.php');
+                header('Location: MeusEventos.php');
             }
 
         }

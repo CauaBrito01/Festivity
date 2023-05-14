@@ -4,7 +4,7 @@
     
 
     //verifica se esxiste uma variavel email na sua sessão
-    if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['password']) == true) || (!isset($_SESSION['CNPJ']) == true) and (!isset($_SESSION['senhaOrganizador']) == true))  
+    if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['password']) == true))
     {
         //caso não esxita te joga para o login e destroi os dados atuais
         unset($_SESSION['email']);
@@ -32,15 +32,10 @@
                 <a href="/festivity/Home.php">
                     <p>Home</p>
                 </a>
-                <a href="CadastroEvento.php">
-                    <p>Cadastre um evento</p>
-                </a>
                 <a href="GerenciarUsuarios.php">
                     <p>Gerenciar Usuarios</p>
                 </a>
-                <a href="MeusEventos.php">
-                    <p>Meus Eventos</p>
-                </a>
+                
 
                 <div class="sectionLoginSearch">
                     <div class="loginEcadastro">
