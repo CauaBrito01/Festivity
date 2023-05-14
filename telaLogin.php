@@ -60,9 +60,9 @@
                     <form class="orgForm hidden" action="testLogin.php" method= "POST" name="organizadorForm">
                       
                         <input 
-                            type="text" 
-                            name="cnpj" 
-                            placeholder="insira o cnpj da empresa"                                
+                            type="email" 
+                            name="emailOrganizador" 
+                            placeholder="insira o email da empresa"                                
                         > 
 
                         
