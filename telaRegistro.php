@@ -2,11 +2,18 @@
     //$nomeCliente        = $_POST['text'];
     //$nomeOrganizador    = $_POST['nomeOrganizador'];
     if(isset($_POST['nomeOrganizador'])){
-        if(isset($_POST['submitOrg']))
+
+        include_once('config.php');
+
+        $emailOrganizador = $_POST['emailOrganizador'];
+
+        $sql = "SELECT NOME_ORGANIZADOR FROM ORGANIZADOR WHERE EMAIL_ORGANIZADOR = '$emailOrganizador'";
+        $result = $conexao->query($sql);
+        //print_r($result);
+        if(isset($_POST['submitOrg']) && (mysqli_num_rows($result) < 1))
         {   
             //faz referencia ao config
-            include_once('config.php');
-
+        
             //armazena os valoras dos formularios em variaveis
             $nomeOrganizador = $_POST['nomeOrganizador'];
             $cnpj = $_POST['cnpj'];
@@ -16,10 +23,17 @@
             
             //insere no bd
             $result = mysqli_query($conexao, "INSERT INTO ORGANIZADOR(NOME_ORGANIZADOR,CNPJ,EMAIL_ORGANIZADOR,TELEFONE_ORGANIZADOR,SENHA_ORGANIZADOR) VALUES ('$nomeOrganizador','$cnpj','$emailOrganizador','$telOrganizador','$senhaOrganizador')");
+        }else{
+            echo"<script>alert('Email ja cadastrado!');</script>";
         }
     }else{
-        //se freceber algo do submit
-        if(isset($_POST['submit']))
+
+        $email = $_POST['email'];
+
+        $sql = "SELECT NOME_CLIENTE FROM CLIENTE WHERE EMAIL_CLIENTE = '$email'";
+        $result = $conexao->query($sql);
+        //se receber algo do submit
+        if(isset($_POST['submit']) && (mysqli_num_rows($result) < 1))
         {   
             //faz referencia ao config
             include_once('config.php');
