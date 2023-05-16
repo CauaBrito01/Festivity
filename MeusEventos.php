@@ -2,7 +2,7 @@
     //inicia a sessão
     session_start();
     
-
+    include_once('config.php');
 
     //verifica se esxiste uma variavel email na sua sessão
     if((!isset($_SESSION['emailOrganizador']) == true) and (!isset($_SESSION['senhaOrganizador']) == true))
@@ -14,6 +14,11 @@
     }
     //caso exista cria a variavel logado e passa o valor do input de email para ela
     $logado = $_SESSION['emailOrganizador'];
+
+    $sqlEvento = "SELECT * FROM evento ORDER BY ID_EVENTO ";
+
+    $result = $conexao->query($sqlEvento);
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +29,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus Eventos</title>
     <link rel="stylesheet" href="./Styles/header.css">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="./Styles/MeusEventos.css">
     <link rel="stylesheet" href="./Styles/reset.css">
 </head>
@@ -102,14 +107,51 @@
                         </div>
                     </div>
                 </div>  
-                
-    
-
             </div>
-
-            
-
         </div>
+        <div class="m-5"> 
+        <table class="table table-bg ">
+        <thead>
+                <tr>
+                    <th scope="col">#id</th>
+                    <th scope="col">Nome Evento</th>
+                    <th scope="col">Data Evento</th>
+                    <th scope="col">Local</th>
+                    <th scope="col">Faixa Etaria</th>
+                    <th scope="col">Descrição Evento</th>
+                    <th scope="col">Endereço</th>
+                    <th scope="col">#id Organizador</th>
+                    <th scope="col">Valor Ingresso</th>
+                    <th scope="col">Endereço</th>
+                    <th scope="col">Imagem Perfil</th>
+                    <th scope="col">Imagem Capa</th>
+                    <th scope="col">...</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                while($user_data = mysqli_fetch_assoc($result))
+                {
+                    echo "<tr>";
+                        echo "<td>".$user_data['ID_EVENTO']."</td>";
+                        echo "<td>".$user_data['NOME_EVENTO']."</td>";
+                        echo "<td>".$user_data['DATA_EVENTO']."</td>";
+                        echo "<td>".$user_data['LOCAL']."</td>";
+                        echo "<td>".$user_data['FAIXA_ETARIA']."</td>";
+                        echo "<td>".$user_data['DESCRICAO_EVENTO']."</td>";
+                        echo "<td>".$user_data['ENDERECO']."</td>";
+                        echo "<td>".$user_data['ID_ORGANIZADOR']."</td>";
+                        echo "<td>".$user_data['VALOR_INGRESSO']."</td>";
+                        echo "<td>".$user_data['ENDERECO']."</td>";
+                        echo "<td>".$user_data['IMAGEM_PERFIL']."</td>";
+                        echo "<td>".$user_data['IMAGEM_CAPA']."</td>";
+
+                }
+                ?>
+            </tbody>
+        </table>
+    
+    </div>
     </main>
 
     
