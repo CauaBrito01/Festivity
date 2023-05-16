@@ -14,6 +14,28 @@
     }
     //caso exista cria a variavel logado e passa o valor do input de email para ela
     $logado = $_SESSION['emailOrganizador'];
+
+    if(isset($_POST['submit']))
+        {   
+            //faz referencia ao config
+            include_once('config.php');
+
+            //armazena os valoras dos formularios em variaveis
+            
+            $nomeEvento  = $_POST['nomeEvento'];
+            $dataEhora = $_POST['dataEhora'];
+            $local = $_POST['local'];
+            $faixaEtaria = $_POST['faixaEtaria'];
+            $descEvento = $_POST['descEvento'];
+            $endereco = $_POST['endereco'];          
+            $valor = $_POST['valor'];
+            
+
+            
+            
+            //insere no bd
+            $result = mysqli_query($conexao, "INSERT INTO EVENTO(NOME_EVENTO,DATA_EVENTO,FAIXA_ETARIA,DESCRICAO_EVENTO,ENDERECO,VALOR_INGRESSO) VALUES ('$nomeEvento','$dataEhora','$faixaEtaria','$descEvento','$endereco','$valor')");
+        }
 ?>
 
 <!DOCTYPE html>
@@ -74,44 +96,49 @@
                     
                 </div>
                 <div class="dados_evento">
-                    <div class="secao1">
-                        <p class="secao_registro">01| Preencha alguns dados sobre seu evento </p>
-                        <p class="campo_registro">Nome da Página*</p>
-                        <input class="input_nome_evento" placeholder="Ex: chopada de medicina, show coldplay, Festival de Curitiba" type="text">
-                        <p class="campo_registro">Descrição do Evento*</p>
-                        <input class="input_desc_evento" placeholder="Ex: descreva um pouco sobre o evento" type="text">
-                    </div>
-                    <div class="secao2">
-                        <p class="secao_registro">02| Preencha as redes sociais do evento</p>
-                        <div class="redes_sociais">
-                            <input class="input_redes_evento" placeholder="Ex: Instagram" type="text">
-                            <input class="input_redes_evento" placeholder="Ex: Twitter" type="text">
+                    <form action="CadastroEvento.php"  method="POST" class="clienteDados" name="clienteForm">
+                        <div class="secao1">
+                            <p class="secao_registro">01| Preencha alguns dados sobre seu evento </p>
+                            <p class="campo_registro">Nome da Página*</p>
+                            <input name="nomeEvento" class="input_nome_evento" placeholder="Ex: chopada de medicina, show coldplay, Festival de Curitiba" type="text">
+                            <p class="campo_registro">Descrição do Evento*</p>
+                            <input name="descEvento" class="input_desc_evento" placeholder="Ex: descreva um pouco sobre o evento" type="text">
                         </div>
-                    </div>
-                    <div class="secao3">
-                        <p class="secao_registro">03|Preencha Informações sobre localidade e compra</p>
-                        <p class="campo_registro">Endereço do Evento*</p>
-                        <input class="input_info_evento" placeholder="Ex: Campinas Hall - CURITIBA / PR" type="text">
-                        <p class="campo_registro">Data e Horario*</p>
-                        <input class="input_info_evento" placeholder="Ex: 05 de abril • 23:00 até 06 de abril • 05:00" type="text">
-                        <p class="campo_registro">Valor Ingressos*</p>
-                        <input class="input_info_evento" placeholder="Ex:Primeiro lote 80R$, Segundo lote 160R$, Lote V.I.P 300R$" type="text">
-                        <p class="campo_registro">Faixa Etaria do Evento*</p>
-                        <input class="input_info_faixa_etaria" placeholder="Ex: Proibido para menores de 18 anos" type="text">
-                    </div>
-                    <div class="secao4">
-                        <p class="secao_registro">04|Persolanize sua Pagina de Evento</p>
-                        <form action="/upload" method="post" enctype="multipart/form-data">
-                            <p class="campo_registro">Imagem de Perfil*</p>
-                            <input type="file" name="fileUpload" multiple>
-                            <p class="campo_registro">Imagem de Capa*</p>
-                            <input type="file" name="fileUpload" multiple>
-                        </form>
-                        <div class="botoes">
-                            <button class="button">VOTLAR</button>
-                            <button class="button">CRIAR PAGINA</button>
+                        <div class="secao2">
+                            <p class="secao_registro">02| Preencha as redes sociais do evento</p>
+                            <div class="redes_sociais">
+                                <input class="input_redes_evento" placeholder="Ex: Instagram" type="text">
+                                <input class="input_redes_evento" placeholder="Ex: Twitter" type="text">
+                            </div>
                         </div>
-                    </div>
+                        <div class="secao3">
+                            <p class="secao_registro">03|Preencha Informações sobre localidade e compra</p>
+                            <p class="campo_registro">Endereço do Evento*</p>
+                            <input name="endereco" class="input_info_evento" placeholder="Ex: Evenida das Americas - CURITIBA / PR" type="text">
+                            <p class="campo_registro">Local do Evento*</p>
+                            <input name="local" class="input_info_evento" placeholder="Ex: Teatro das  Americas" type="text">
+                            <p class="campo_registro">Data e Horario*</p>
+                            <input name="dataEhora" class="input_info_evento" placeholder="Ex: 05 de abril • 23:00 até 06 de abril • 05:00" type="text">
+                            <p class="campo_registro">Valor Ingressos*</p>
+                            <input name="valor" class="input_info_evento" placeholder="Ex:Primeiro lote 80R$, Segundo lote 160R$, Lote V.I.P 300R$" type="text">
+                            <p class="campo_registro">Faixa Etaria do Evento*</p>
+                            <input name="faixaEtaria" class="input_info_faixa_etaria" placeholder="Ex: Proibido para menores de 18 anos" type="text">
+                        </div>
+                        <div class="secao4">
+                            <p class="secao_registro">04|Persolanize sua Pagina de Evento</p>
+                            <form action="/upload" method="post" enctype="multipart/form-data">
+                                <p class="campo_registro">Imagem de Perfil*</p>
+                                <input type="file" name="fileUpload" multiple>
+                                <p class="campo_registro">Imagem de Capa*</p>
+                                <input type="file" name="fileUpload" multiple>
+                            </form>
+                            <div class="botoes">
+                                <button class="button">VOTLAR</button>
+                                <button type="submit" name="submit" class="button">CRIAR PAGINA</button>
+                            </div>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
