@@ -35,7 +35,6 @@
             while($user_data = mysqli_fetch_assoc($result))
             {
             $nomeOrg  = $user_data['NOME_ORGANIZADOR'];
-            $cnpj = $user_data['CNPJ'];
             $telefoneOrg = $user_data['TELEFONE_ORGANIZADOR'];
             $emailOrg = $user_data['EMAIL_ORGANIZADOR'];
             $senhaOrg = $user_data['SENHA_ORGANIZADOR'];
@@ -45,14 +44,14 @@
 
 
         else{
-            header('Location: gerenciarUsuario.php');
+            header('Location: gerenciarUsuarioOrg.php');
         }
 
        
         
         //insere no bd
 
-        $sqlUpdate = "UPDATE organizador SET NOME_ORGANIZADOR='$nomeOrg',SENHA_ORGANIZADOR='$senhaOrg',EMAIL_ORGANIZADOR='$emailOrg',TELEFONE_ORGANIZADOR='$telefoneOrg',CNPJ='$$cnpj'
+        $sqlUpdate = "UPDATE organizador SET NOME_ORGANIZADOR='$nomeOrg',SENHA_ORGANIZADOR='$senhaOrg',EMAIL_ORGANIZADOR='$emailOrg',TELEFONE_ORGANIZADOR='$telefoneOrg'
         WHERE ID_ORGANIZADOR = '$id'";
 
         $result = $conexao->query($sqlUpdate);
@@ -124,7 +123,7 @@
             <div class="inputs">
                 <h2>Editar dados da Conta</h2>
 
-                <form class="editarDadosCampos" action="saveEdit.php"  method="POST" class="clienteDados" name="clienteForm">
+                <form class="editarDadosCampos" action="saveEditOrg.php"  method="POST" class="clienteDados" name="clienteForm">
                     <input
                         value=<?php echo $nomeOrg;?>
                         type="text" 
@@ -143,7 +142,7 @@
 
                     <input
                         value=<?php echo $senhaOrg;?>
-                        type="text" 
+                        type="password" 
                         name="password" 
                         placeholder="senha"                         
                         title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
@@ -157,15 +156,6 @@
                         title="insira seu telefone"
                     >
 
-                    <input
-                            value=<?php echo $cnpj;?>
-                            type="text" 
-                            name="cnpj" 
-                            placeholder="insira o cnpj da empresa" 
-                            title="insira seu cnpj"
-                               
-                        > 
-
                     
 
                     <input type="hidden" name="idOrg" value=<?php echo $id;?>>
@@ -173,7 +163,8 @@
                     <div class="buttonContainer">
 
                         <button type="submit" name="updateOrg" id="updateOrg" onclick="createCliente()"> Salvar Alterações</button>        
-                        <button>Excluir conta</button>
+                        <button> Voltar Pagina</button>
+                        
                         
                     </div>
 

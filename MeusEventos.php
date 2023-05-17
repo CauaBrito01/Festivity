@@ -4,6 +4,7 @@
     
     include_once('config.php');
 
+
     //verifica se esxiste uma variavel email na sua sessão
     if((!isset($_SESSION['emailOrganizador']) == true) and (!isset($_SESSION['senhaOrganizador']) == true))
     {
@@ -14,6 +15,12 @@
     }
     //caso exista cria a variavel logado e passa o valor do input de email para ela
     $logado = $_SESSION['emailOrganizador'];
+    
+
+
+    //$sqlEvento = "SELECT * FROM EVENTO WHERE ID_ORGANIZADOR = (SELECT ID_ORGANIZADOR FROM ORGANIZADOR WHERE EMAIL_ORGANIZADOR = '$logado')";
+
+    //$sqlEvento = "SELECT * FROM EVENTO WHERE ID_ORGANIZADOR = (SELECT ID_ORGANIZADOR FROM ORGANIZADOR WHERE EMAIL_ORGANIZADOR = '$logado')";
 
     $sqlEvento = "SELECT * FROM evento ORDER BY ID_EVENTO ";
 
@@ -44,7 +51,7 @@
                 <a href="CadastroEvento.php">
                     <p>Cadastre um evento</p>
                 </a>
-                <a href="GerenciarUsuarios.php">
+                <a href="GerenciarUsuariosOrg.php">
                     <p>Gerenciar Usuarios</p>
                 </a>
                 <a href="MeusEventos.php">
@@ -126,6 +133,7 @@
                     <th scope="col">Imagem Perfil</th>
                     <th scope="col">Imagem Capa</th>
                     <th scope="col">...</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -145,6 +153,7 @@
                         echo "<td>".$user_data['ENDERECO']."</td>";
                         echo "<td>".$user_data['IMAGEM_PERFIL']."</td>";
                         echo "<td>".$user_data['IMAGEM_CAPA']."</td>";
+
 
                 }
                 ?>
