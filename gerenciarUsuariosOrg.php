@@ -33,6 +33,76 @@
     <link rel="stylesheet" href="./Styles/reset.css">
 
     <style>
+        
+        
+        *
+        {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        :root {
+            --cinzaEscuro: #16171b;
+            --cinzaClaro: #222327;
+            --white: #f1efef;
+            --vermelho: #bb432c;
+        }
+
+        body{
+            background-color: var(--cinzaEscuro);
+        }
+
+        table.table.table-bg {
+            display: block;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            padding-left: 20%;
+            background-color: var(--cinzaClaro);
+            color: white;  
+            width: 100%;
+            /* align-items: center; */
+            justify-content: center;
+            margin-top: 10%;
+
+        }
+
+        thead {
+            font-size: 24px;
+
+        }
+
+        td , th{
+            padding:2%;
+            
+        }
+
+        .bodyID{
+            margin-bottom: 5rem;
+        }
+
+        .table-bg{
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px 15px 0 0;
+            border:1px solid var(--vermelho);
+            box-shadow: 2px 5px 20px 5px var(--vermelho);
+
+        }
+
+        .imgContainer{
+            display:flex;
+            align-itens:center;
+            justify-content:center;
+            width:100%;
+            padding-bottom:5%;
+
+        }
+
+        
+    </style>
+    <style>
+        
+        
 
         .bodyID{
             margin-bottom: 5rem;
@@ -43,7 +113,7 @@
             border-radius: 15px 15px 0 0;
         }
 
-        
+
         
     </style>
 </head>
@@ -54,19 +124,21 @@
             <div class="logo">
                 <img src="./images/logo.png" alt="">
             </div>
-            <div class="headerOptions">
-                
-                <a href="CadastroEvento.php">
-                    <p>Cadastre um evento</p>
-                </a>
-                <a href="GerenciarUsuariosOrg.php">
-                    <p>Gerenciar Usuarios</p>
-                </a>
-                <a href="MeusEventos.php">
-                    <p>Meus Eventos</p>
-                </a>
+            <div class="headerTextoContainer">
+                <div class="headerOptions">
+                    <a href="meusEventos.php">
+                        <p>Meus Eventos</p>
+                    </a>
+                    <a href="CadastroEvento.php">
+                        <p>Cadastre um evento</p>
+                    </a>
+                    <a href="gerenciarUsuariosOrg.php">
+                        <p>Gerenciar Usuarios</p>
+                    </a>
+                </div>
+            </div>
 
-                <div class="sectionLoginSearch">
+            <div class="sectionLoginSearch">
                     <div class="loginEcadastro">
                         <div>
                         <?php
@@ -77,10 +149,8 @@
                             <a href="sair.php">SAIR</a>
                         </div>
                     </div>  
-                </div>
-
-
             </div>
+            
         </div>  
     </header>   
 </section>
@@ -96,7 +166,7 @@
                     <th scope="col">Senha</th>
                     <th scope="col">Email</th>
                     <th scope="col">Telefone</th>
-                    <th scope="col">...</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -128,7 +198,11 @@
         </table>
     
     </div>
-</section>  
+    <div class="imgContainer">
+        <img src="./images/Company.gif" alt="">
+    </div>
+</section>
+
 
 </body>
 </html>
