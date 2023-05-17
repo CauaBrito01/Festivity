@@ -210,11 +210,11 @@
 <footer>
    
     <div class="container">
-        <img src="./images/footerIcons/instagram.png" />
-        <img src="./images/footerIcons/linkedin.png "/>
-        <img src="./images/footerIcons/tiktok.png "/>
-        <img src="./images/footerIcons/twitter-sign.png "/>
-        <img src="./images/footerIcons/youtube.png "/>
+        <img src="./images/instagram.png" />
+        <img src="./images/linkedin.png "/>
+        <img src="./images/tiktok.png "/>
+        <img src="./images/twitter-sign.png "/>
+        <img src="./images/youtube.png "/>
     </div>
     <div class="textContainer">
         <h3>Festivity</h3>

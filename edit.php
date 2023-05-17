@@ -69,6 +69,7 @@
     <link rel="stylesheet" href="./Styles/edit.css">
     <link rel="stylesheet" href="./Styles/header.css">
 '    <link rel="stylesheet" href="./Styles/reset.css">
+
 '
 </head>
 <body>
@@ -182,7 +183,9 @@
             </div>
 
         </div>
+
 </body>
+
 </html>
 
 

@@ -160,11 +160,20 @@
         
     </main>
     <footer>
-        <div class="footerInformation">
-            <p>cliente@aleatorio.com.br</p>
-            <p>Todos os direitos reservados</p>
-            <p>Nossas redes! <a target="_blank" href="https://i.pinimg.com/originals/fd/35/14/fd351489cccd7642ca81b5e38a3154f5.jpg"><img src="./images/insta.png" alt=""></a></p>
-        </div>
-    </footer>
+   
+    <div class="container">
+        <img src="./images/instagram.png" />
+        <img src="./images/linkedin.png "/>
+        <img src="./images/tiktok.png "/>
+        <img src="./images/twitter-sign.png "/>
+        <img src="./images/youtube.png "/>
+    </div>
+    <div class="textContainer">
+        <h3>Festivity</h3>
+        <p>@Copyright 2008-2015</p>
+        <p>All rights reserved. Powered by the Festivity </p>
+    </div>
+
+</footer>
 </body>
 </html>
