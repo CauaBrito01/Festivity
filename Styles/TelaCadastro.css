@@ -5,6 +5,14 @@
     --vermelho: #bb432c;
 }
 
+body {
+    background-color:var(--cinzaEscuro);
+}
+
+input{
+    background:none !important;
+    border: 1px solid var(--vermelho) !important;
+}
 
 main{
     display: flex;
@@ -13,7 +21,9 @@ main{
 
 .main-container{
     display: flex;
-    width: 80%;
+    width: 100%;
+    padding-top: 10%;
+    padding-bottom: 10%;
     justify-content: center;
 }
 
@@ -24,7 +34,13 @@ main{
 }
 
 .dados_conatiner{
-    width: 70%;
+    width: 80%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 10px;
+    box-shadow: 1px 4px 10px 1px var(--vermelho);
+    background-color: var(--cinzaClaro);
+    height: 100%;
 }
 
 .titulo_cadastro{
@@ -33,20 +49,22 @@ main{
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    color: #191919;
+    color: var(--white);
     font-style: normal;
     font-weight: 500;
     font-size: 36px;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     font-weight: bold;
-    border-bottom: 2px solid lightgrey;
+    border-bottom: 2px solid var(--vermelho);
     padding-bottom: 3rem;
+    width: 100%
 }
 
 
 .secao1{
-    border-bottom: 2px solid lightgrey;
+    border-bottom: 2px solid var(--vermelho);
     padding-bottom: 3rem;
+    width: 100%;
 }
 
 .secao_registro{
@@ -57,16 +75,16 @@ main{
     font-weight: 400;
     font-size: 20px;
     margin-bottom: 2rem;
-
+    color: var(--white);
 }
 
 .campo_registro{
     margin-top: 2rem;
     margin-bottom: 1rem;
     font-size: 18px;
-    color: grey;
+    color: var(--white);
+    margin-left: 3%;
     font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-
 }
 
 .input_nome_evento{
@@ -79,7 +97,7 @@ main{
     padding-right: 0 !important;
     padding: 7px 12px;
     height: 25px;
-    width: 800px;
+    width: 100%;
 }
 
 .input_desc_evento{
@@ -93,12 +111,12 @@ main{
     padding-right: 0 !important;
     padding: 7px 12px;
     height: 300px;
-    width: 800px;
+    width: 100%;
 }
 
 .redes_sociais{
     display: flex;
-    
+    justify-content: space-between;
 }
 
 .input_redes_evento{
@@ -112,12 +130,12 @@ main{
     padding-right: 0 !important;
     padding: 7px 12px;
     height: 25px;
-    width: 300px;
+    width: 40%;
     margin-right: 1rem;
 }
 
 .secao2{
-    border-bottom: 2px solid lightgrey;
+    border-bottom: 2px solid var(--vermelho);
     padding-bottom: 3rem;
 }
 
@@ -131,7 +149,7 @@ main{
     padding-right: 0 !important;
     padding: 7px 12px;
     height: 25px;
-    width: 800px;
+    width: 100%;
 
 }
 
@@ -145,19 +163,19 @@ main{
     padding-right: 0 !important;
     padding: 7px 12px;
     height: 25px;
-    width: 800px;
+    width: 100%;
     
 }
 
 .secao3{
-    border-bottom: 2px solid lightgrey;
+    border-bottom: 2px solid var(--vermelho);
     padding-bottom: 3rem;
 }
 
 .secao4{
     display: flex;
     flex-direction: column;
-    border-bottom: 2px solid lightgrey;
+    border-bottom: 2px solid var(--vermelho);
     padding-bottom: 3rem;
 }
 
@@ -180,36 +198,60 @@ input[type="file"] {
     
 }
 
-.button {
-    border: none;
-    margin: 1rem;
-    border-top: 1px solid #bfbfbf;
-    background: #969696;
-    background: -webkit-gradient(linear, left top, left bottom, from(#8a8a8a), to(#969696));
-    background: -webkit-linear-gradient(top, #8a8a8a, #969696);
-    background: -moz-linear-gradient(top, #8a8a8a, #969696);
-    background: -ms-linear-gradient(top, #8a8a8a, #969696);
-    background: -o-linear-gradient(top, #8a8a8a, #969696);
-    padding: 14.5px 29px;
-    -webkit-border-radius: 40px;
-    -moz-border-radius: 40px;
-    border-radius: 40px;
-    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-    box-shadow: rgba(0,0,0,1) 0 1px 0;
-    text-shadow: rgba(0,0,0,.4) 0 1px 0;
-    color: white;
-    font-size: 17px;
-    font-family: Helvetica, Arial, Sans-Serif;
-    text-decoration: none;
-    vertical-align: middle;
+.containerForm {
+    display:flex;
+    justify-content:space-between;
+}
+
+button{
+    background:none;
+    border:1px solid var(--vermelho);
+    color:var(--vermelho);
+    width:100px;
+    height:50px;
+    border-radius:10px;
+    margin-top:5%;
+    margin-left:5%;
+}
+
+button:hover{
+    background-color:var(--vermelho);
+}
+
+button a:hover,button:hover{
+    cursor:pointer;
+    color:var(--white);
+}
+
+button a {
+    color: var(--vermelho);
+}
+
+@media only screen and (max-width: 1100px){
+    .containerForm {
+        flex-direction: column;
     }
- .button:hover {
-    border-top-color: #828282;
-    background: #828282;
-    color: #ccc;
+
+    input[type="file"] {
+        width: 80% !important;
+    }  
+    
+    .secao1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
- .button:active {
-    border-top-color: #ffffff;
-    background: #ffffff;
+    
+    .input_info_evento {
+        width:93%;
     }
+
+    .input_info_faixa_etaria {
+        width:93%;
+    }
+
+    .dados_conatiner {
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+}

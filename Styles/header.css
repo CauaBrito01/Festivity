@@ -6,11 +6,17 @@ a{
     text-decoration: none;
 }
 
+.logo{
+    display:flex;
+    width:55%;
+}
+
 header .logo img{
     width: 120px;
     height: 120px;
     position: absolute;
     z-index: 99;
+    margin-top:-2%;
 }
 .bodyID{
     background-color: #333333;
@@ -26,7 +32,8 @@ header .logo img{
 }
 header .sectionHeader{
     display: flex;
-    justify-content: space-between;
+    align-items:end;
+    justify-content:end;
 }
 
 header .headerOptions{
@@ -76,6 +83,27 @@ header .headerOptions{
 }
 
 
-.loginEcadastro{
-    color: #cfcfcf;
+@media screen and (max-width:500px){
+    header .sectionHeader {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 10%;
+    }
+
+    header .headerOptions {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5%;
+    }
+
+    header .logo img {
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        z-index: 99;
+        margin-top: 10%;
+        margin-left: -33%;
+    }
+
 }

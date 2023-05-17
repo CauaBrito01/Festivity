@@ -1,50 +1,65 @@
-
-
 @import url('https://fonts.googleapis.com/css?family=Helvetica+Neue');
 
-*
-{
+* {
     margin: 0;
     padding: 0;
     font-family: 'Helvetica Neue', sans-serif;
 }
 
+a {
+    color: white !important;
+    text-decoration: none;
+}
+
 :root {
     --cinzaEscuro: #16171b;
     --cinzaClaro: #222327;
-    --white: #f1efef;
+    --white:#f1efef;
     --vermelho: #bb432c;
-}
+  }
+  
 
-.hidden{
-    display: none;
-}
-
-main{
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+body {
     background-color: var(--cinzaEscuro);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.blocoFormularios{
-    width: 400px;
+.formularios {
+    height: 500px;
+    width: 430px;
     background-color: var(--cinzaClaro);
-    border-radius: 10px;
 }
 
-form{
+.containerText {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    margin-top:5%;
+    font-weight: 900;
+    font-size: 24px;
+    color: var(--white);
+    padding-top: 10px;
 }
 
-form input{
-    width: 50%;
-    margin-top: 5%;
+
+.formularios .containerEmail, .formularios .containerSenha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:10%;
+}
+
+.formularios .containerEmail label, .formularios .containerSenha label {
+    font-size: 22px;
+    margin-right:10px;
+    display:none;
+}
+
+.formularios .containerEmail input,  .formularios .containerSenha input {
     border: none;
     color: var(--white);
     border-bottom: 1px solid #ccc;
@@ -52,52 +67,35 @@ form input{
     height: 20px;
     font-size: 16px;
     background: none;
-} 
-
-form  input::placeholder {
+    width: 250px;
+  }
+  
+  .formularios .containerEmail input::placeholder , .formularios .containerSenha input::placeholder {
     color: #999;
     font-size: 14px;
     position: absolute;
     top: 0;
     left: 0;
     transition: all 0.3s ease-in-out;
-}
-
-form input:focus::placeholder {
+  }
+  
+  .formularios .containerEmail input:focus::placeholder,.formularios .containerSenha input:focus::placeholder {
     top: -20px;
     font-size: 12px;
     color: #333;
-}
+  }
+  
 
-form .containerSexo{
+
+.botaoLogin {
+    margin-top: 10%;
     display: flex;
     flex-direction: column;
-    margin-top:5%;
-    width: 50%;
+    justify-content: center;
+    align-items: center;
 }
 
-form .containerSexo label{
-    margin-bottom:5%;
-    text-align: left;
-    color: var(--white);
-}
-
-form .containerSexo select{
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    color: #333;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.2s ease-in-out;
-}
-
-form .botaoLogin{
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-
-form .botaoLogin button{
+.botaoLogin button {
     color: var(--vermelho);
     border: none;
     border-radius: 4px;
@@ -108,79 +106,52 @@ form .botaoLogin button{
     transition: all 0.3s ease-in-out;
     border: 2px solid var(--vermelho);
 }
-
-form .botaoLogin button:hover{
+  
+.botaoLogin button:hover {
     background-color: var(--vermelho);
     color: var(--white);
 }
+  
+.botaoLogin button:active {
+  transform: translateY(1px);
+}
 
-.titulos{
-    width: 100%;
+.containerInputs {
+    margin-top: 25%;
+    margin-bottom: 15%;
+}
+  
+
+.configuracaoConta {
+    margin-top: 5%;
     display: flex;
     flex-direction: column;
+    text-align: left;
     align-items: center;
-    justify-content: center;
-    margin-top:5%;
-    margin-bottom:5%;
-}
-
-.titulos p{
-    line-height:20px;
-    font-weight: bolder;
-    font-size: 15px;
-    color: var(--vermelho);
-}
-
-.gifContainer{
-    width:200px;
-}
-
-.gifContainer img {
-    width:200px;
-}
-
-
-.tipoDeUsuario{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-
-
-.tipoDeUsuario a{
-    line-height:20px;
-    font-weight: bolder;
-    font-size: 15px;
+    font-size: medium;
     color: var(--white);
 }
 
-.ativo {
-    color: blue !important;
+.configuracaoConta p {
+    padding-bottom: 10px;
 }
 
-.tipoDeUsuario a:hover{
-    cursor: pointer;
-    font-weight: lighter;
+.configuracaoConta p:hover{
+    text-decoration: underline;
 }
 
-@media screen and (max-width:1100px){
+@media screen and (max-width:500px){
     
-    main{
-        justify-content: center;
-        align-items: center;
+    body { 
+
     }
 
-    .blocoFormularios {
-        margin-right: 0;
-        width:80%;
+    .formularios {
+        height: 410px;
+        width: 352px;
     }
 
-    .gifContainer{
-        display: none;
+    .containerText {
+        font-size: larger;
     }
-
 }
-

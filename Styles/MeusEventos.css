@@ -1,9 +1,26 @@
+:root {
+    --cinzaEscuro: #16171b;
+    --cinzaClaro: #222327;
+    --white:#f1efef;
+    --vermelho: #bb432c;
+}
+
+body{
+    background-color: var(--cinzaEscuro);
+}
+
+h1{
+    color:var(--white);
+}
+
 main{
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top:5%;
+    padding-bottom:5%;
 }
 
 .mainContainer{
@@ -25,7 +42,7 @@ main{
 
 .tituloEvento{
     margin-top: 2rem;
-    color: #191919;
+    color:var(--white);
     font-style: normal;
     font-weight: 300;
     font-size: 25px;
@@ -33,17 +50,20 @@ main{
     font-weight: bold;
 }
 
-.eventoColdplay{
+.eventoContainer{
     font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
     display: flex;
     margin-top: 1.5rem;
-    background-color: #F3F5F7;
+    margin-bottom: 5%;
+    box-shadow: 2px 5px 20px 5px var(--vermelho);
+    color: var(--white);
     border-radius: 15px;
     padding: 6px;
+    background-color:var (--cinzaClaro);
 }
 
 .linha1{
-    width: 33%;
+    width: 100%;
     margin: 1rem;
     display: flex;
     flex-direction: column;
@@ -56,13 +76,11 @@ main{
 }
 
 .linha2{
-    width: 33%;
+    width: 100%;
     margin: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+    justify-content: center;    
 }
 
 .linha2 p{
@@ -70,10 +88,10 @@ main{
 }
 
 .linha3{
-    width: 33%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .organizadoraEvento{
@@ -92,7 +110,7 @@ main{
 .titulo_descricao{
     text-transform: uppercase;
     font-weight: 600;
-    color: #1B2124;
+    color:var(--white);
     font-size: 12px;
     font-family: "Rubik";
     font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
@@ -109,49 +127,30 @@ main{
     margin: 0.8rem;
 }
 
-.original-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    text-decoration: none;
-    color: red;
-    font-size: 18px;
-    border-radius: 0px;
-    width: 130px;
-    height: 30px;
-    position: relative;
-    transition: 0.3s;
-    overflow: hidden;
-    border: none;
-    background-color: #F3F5F7;
-  }
-  .original-button a{
-      color: rgb(0, 0, 0);
-  }
-  .original-button::before, .original-button::after {
-    content: "";
-    display: block;
-    height: 2px;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    background-color: rgb(0, 0, 0);
-    transition: .3s;
-  }
-  
-  .original-button::before {
-    top: 0;
-  }
-  
-  .original-button::after {
-    bottom: 0;
-  }
-  
-  .original-button:hover::before {
-    transform: translateX(-100%);
-  }
-  
-  .original-button:hover::after {
-    transform: translateX(100%);
-  }
+.original-button{
+    background:none;
+    border:1px solid var(--vermelho);
+    width:100px;
+    height:50px;
+    border-radius:10px;
+}
+
+.original-button:hover{
+    background-color:var(--vermelho);
+}
+
+.original-button a:hover{
+    color:var(--white);
+}
+
+.original-button a {
+    color: var(--vermelho);
+}
+
+@media only screen and (max-width: 1100px){
+
+    .eventoContainer {
+        flex-direction: column;
+    }
+    
+}
