@@ -21,7 +21,7 @@
 
         }
         
-    header('Location: gerenciarUsuarios.php');
+    header('Location: gerenciarUsuariosOrg.php');
 
        
     

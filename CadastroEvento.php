@@ -15,27 +15,42 @@
     //caso exista cria a variavel logado e passa o valor do input de email para ela
     $logado = $_SESSION['emailOrganizador'];
 
+    include_once('config.php');
+    $sqlEvento = "SELECT ID_ORGANIZADOR FROM ORGANIZADOR WHERE EMAIL_ORGANIZADOR = '$logado'";
+
+    $result = $conexao->query($sqlEvento);
+
+    $fetch = (mysqli_fetch_array($result));
+
+    $id = $fetch['ID_ORGANIZADOR'];
+
+    $id  = intval($id);
+
+
+    
+
     if(isset($_POST['submit']))
-        {   
-            //faz referencia ao config
-            include_once('config.php');
+    {   
+        //faz referencia ao config
+        include_once('config.php');
 
-            //armazena os valoras dos formularios em variaveis
-            
-            $nomeEvento  = $_POST['nomeEvento'];
-            $dataEhora = $_POST['dataEhora'];
-            $local = $_POST['local'];
-            $faixaEtaria = $_POST['faixaEtaria'];
-            $descEvento = $_POST['descEvento'];
-            $endereco = $_POST['endereco'];          
-            $valor = $_POST['valor'];
-            
+        //armazena os valoras dos formularios em variaveis
+        $idOrg =  $id;
+        $nomeEvento  = $_POST['nomeEvento'];
+        $dataEhora = $_POST['dataEhora'];
+        $local = $_POST['local'];
+        $faixaEtaria = $_POST['faixaEtaria'];
+        $descEvento = $_POST['descEvento'];
+        $endereco = $_POST['endereco'];          
+        $valor = $_POST['valor'];
+        
 
-            
-            
-            //insere no bd
-            $result = mysqli_query($conexao, "INSERT INTO EVENTO(NOME_EVENTO,DATA_EVENTO,FAIXA_ETARIA,DESCRICAO_EVENTO,ENDERECO,VALOR_INGRESSO) VALUES ('$nomeEvento','$dataEhora','$faixaEtaria','$descEvento','$endereco','$valor')");
-        }
+        
+        //insere no bd
+        $result = mysqli_query($conexao, "INSERT INTO EVENTO(NOME_EVENTO,DATA_EVENTO,FAIXA_ETARIA,DESCRICAO_EVENTO,ENDERECO,VALOR_INGRESSO) VALUES ('$nomeEvento','$dataEhora','$faixaEtaria','$descEvento','$endereco','$valor')");
+    }
+
+
 ?>
 
 <!DOCTYPE html>

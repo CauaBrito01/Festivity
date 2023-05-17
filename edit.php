@@ -125,6 +125,7 @@
                     
                     <label>Cpf</label>
                     <input
+                        readonly
                         value=<?php echo $cpf;?>
                         type="text" 
                         name="cpf" 
@@ -160,7 +161,7 @@
                     <label>Senha:</label>
                     <input
                         value=<?php echo $minhasenha;?>
-                        type="text" 
+                        type="password" 
                         name="password" 
                         placeholder="senha"                         
                         title="sua senha tem que ter 1 simbolo 1 letra maiscula e pelo menos 8 caracteres"
@@ -171,7 +172,7 @@
                         <div class="buttonContainer">
                         <button type="submit" name="update" id="update" onclick="createCliente()"> Salvar Alterações</button>
             
-                            <button>Excluir conta</button>            
+                            <button>Voltar Pagina </button>            
                         </div>
                 </form>
 
