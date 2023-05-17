@@ -72,41 +72,40 @@
 '
 </head>
 <body>
-        <section class="bodyID">
-            <header class="headerID">
-                <div class="sectionHeader">
-                    <div class="logo">
-                        <img src="./images/logo.png" alt="">
-                    </div>
-                    <div class="headerOptions">
-                        <a href="CadastroEvento.php">
-                            <p>Cadastre um evento</p>
-                        </a>
-                        <a href="GerenciarUsuarios.php">
-                            <p>Gerenciar Usuarios</p>
-                        </a>
-                        <a href="MeusEventos.php">
-                        <p>Meus Eventos</p>
-                        </a>
+<section class="bodyID">
+    <header class="headerID">
+        <div class="sectionHeader">
+            <div class="logo">
+                <img src="./images/logo.png" alt="">
+            </div>
+            <div class="headerTextoContainer">
+                <div class="headerOptions">
+                    <a href="home.php">
+                        <p>Home</p>
+                    </a>
+                    </a>
+                    <a href="gerenciarUsuarios.php">
+                        <p>Gerenciar Usuarios</p>
+                    </a>
+                </div>
+            </div>
 
-                        <div class="sectionLoginSearch">
-                            <div class="loginEcadastro">
-                                <div>
-                                <?php
-                                    echo "<h1><u>$logado</u></h1>";
-                                ?>
-                                </div>
-                                <div class="sair">
-                                    <a href="sair.php">SAIR</a>
-                                </div>
-                            </div>  
+            <div class="sectionLoginSearch">
+                    <div class="loginEcadastro">
+                        <div>
+                        <?php
+                            echo "<h1><u>$logado</u></h1>";
+                        ?>
                         </div>
-
-
-                    </div>
-                </div>  
-            </header>   
-        </section>
+                        <div class="sair">
+                            <a href="sair.php">SAIR</a>
+                        </div>
+                    </div>  
+            </div>
+            
+        </div>  
+    </header>   
+</section>
 
         <div class="container">
 

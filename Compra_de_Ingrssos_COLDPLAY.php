@@ -39,15 +39,11 @@
                 <a href="/festivity/Home.php">
                     <p>Home</p>
                 </a>
-                <a href="CadastroEvento.php">
-                    <p>Cadastre um evento</p>
-                </a>
+                
                 <a href="GerenciarUsuarios.php">
                     <p>Gerenciar Usuarios</p>
                 </a>
-                <a href="MeusEventos.php">
-                    <p>Meus Eventos</p>
-                </a>
+                
 
                 <div class="sectionLoginSearch">
                     <div class="loginEcadastro">
@@ -66,7 +62,7 @@
             </div>
         </div>  
     </header>   
-</section>  
+</section> 
 
     <section class="banner">
         <div class="banner_evento">

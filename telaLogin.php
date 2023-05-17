@@ -45,7 +45,7 @@
 
                         
                         <input
-                            class="input" 
+                            class="password" 
                             type="password" 
                             name="password" 
                             placeholder="senha"                         
@@ -53,8 +53,13 @@
                         > 
 
                         <div  class="botaoLogin">
-                            <input class="inputSubmit" type="submit" name="submit" value="Enviar" onclick="logarCliente()">
+                            <button type="submit" name="submit" value="Enviar" onclick="logarCliente()">Logar</button>
                         </div>
+
+                        <div  class="botaoLogin">
+                            <button> <a href="telaRegistro.php">Registrar</a></button>
+                        </div>
+                    
                     </form>
 
                     <form class="orgForm hidden" action="testLogin.php" method= "POST" name="organizadorForm">
@@ -75,6 +80,10 @@
 
                         <div  class="botaoLogin">
                             <button type="submit"  name="submit" value="Enviar" onclick="logarOrganizador()">Logar</button>
+                        </div>
+                        
+                        <div  class="botaoLogin">
+                            <button> <a href="telaRegistro.php">Registrar</a></button>
                         </div>
                     </form>
 
@@ -135,7 +144,7 @@
         justify-content: center;
     }
 
-    form .input {
+    form input{
         width: 50%;
         margin-top: 5%;
         border: none;
@@ -147,7 +156,7 @@
         background: none;
     } 
 
-    form  .input::placeholder {
+    form  input::placeholder {
         color: #999;
         font-size: 14px;
         position: absolute;
@@ -156,7 +165,7 @@
         transition: all 0.3s ease-in-out;
     }
 
-    form .input:focus::placeholder {
+    form input:focus::placeholder {
         top: -20px;
         font-size: 12px;
         color: #333;
@@ -186,11 +195,17 @@
     }
 
     form .botaoLogin{
-        margin-top: 5%;
-        margin-bottom: 5%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+
     }
 
-    form .botaoLogin .inputSubmit{
+    a {
+    text-decoration: none;
+    color: var(--vermelho);
+    }
+
+    form .botaoLogin button{
         color: var(--vermelho);
         border: none;
         border-radius: 4px;
@@ -202,7 +217,7 @@
         border: 2px solid var(--vermelho);
     }
 
-    form .botaoLogin .inputSubmit:hover{
+    form .botaoLogin button:hover{
         background-color: var(--vermelho);
         color: var(--white);
     }

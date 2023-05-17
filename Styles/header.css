@@ -79,3 +79,13 @@ header .headerOptions{
 .loginEcadastro{
     color: #cfcfcf;
 }
+
+.headerTextoContainer {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+
+u {
+    margin-right: 50px !important;
+}

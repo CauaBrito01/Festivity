@@ -30,7 +30,74 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="./Styles/header.css">
     <link rel="stylesheet" href="./Styles/reset.css">
+    <style>
+        
+        
+        *
+        {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
 
+        :root {
+            --cinzaEscuro: #16171b;
+            --cinzaClaro: #222327;
+            --white: #f1efef;
+            --vermelho: #bb432c;
+        }
+
+        body{
+            background-color: var(--cinzaEscuro);
+        }
+
+        table.table.table-bg {
+            display: block;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            padding-left: 10%;
+            background-color: var(--cinzaClaro);
+            color: white;  
+            width: 100%;
+            /* align-items: center; */
+            justify-content: center;
+            margin-top: 10%;
+
+        }
+
+        thead {
+            font-size: 24px;
+
+        }
+
+        td , th{
+            padding:2%;
+            
+        }
+
+        .bodyID{
+            margin-bottom: 5rem;
+        }
+
+        .table-bg{
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px 15px 0 0;
+            border:1px solid var(--vermelho);
+            box-shadow: 2px 5px 20px 5px var(--vermelho);
+
+        }
+
+        .imgContainer{
+            display:flex;
+            align-itens:center;
+            justify-content:center;
+            width:100%;
+            padding-bottom:5%;
+
+        }
+
+        
+    </style>
     <style>
 
         .bodyID{
@@ -126,6 +193,9 @@
             </tbody>
         </table>
     
+    </div>
+    <div class="imgContainer">
+        <img src="./images/Company.gif" alt="">
     </div>
 </section>   
 

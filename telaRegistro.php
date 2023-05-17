@@ -1,11 +1,16 @@
 <?php
-    //$nomeCliente        = $_POST['text'];
-    //$nomeOrganizador    = $_POST['nomeOrganizador'];
     if(isset($_POST['nomeOrganizador'])){
-        if(isset($_POST['submitOrg']))
-        {   
-            //faz referencia ao config
-            include_once('config.php');
+
+        include_once('config.php');
+
+        $emailOrganizador = $_POST['emailOrganizador'];
+
+        $sql = "SELECT NOME_ORGANIZADOR FROM ORGANIZADOR WHERE EMAIL_ORGANIZADOR = '$emailOrganizador'";
+        $result = $conexao->query($sql);
+
+        if(isset($_POST['submitOrg']) && (mysqli_num_rows($result) < 1))
+        {
+
 
             //armazena os valoras dos formularios em variaveis
             $nomeOrganizador = $_POST['nomeOrganizador'];
@@ -13,33 +18,41 @@
             $emailOrganizador = $_POST['emailOrganizador'];
             $telOrganizador = $_POST['telOrganizador'];
             $senhaOrganizador = MD5($_POST['senhaOrganizador']);
-            
+
             //insere no bd
             $result = mysqli_query($conexao, "INSERT INTO ORGANIZADOR(NOME_ORGANIZADOR,CNPJ,EMAIL_ORGANIZADOR,TELEFONE_ORGANIZADOR,SENHA_ORGANIZADOR) VALUES ('$nomeOrganizador','$cnpj','$emailOrganizador','$telOrganizador','$senhaOrganizador')");
+        }else{
+            echo"<script>alert('Email ja cadastrado!');</script>";
         }
-    }else{
-        //se freceber algo do submit
-        if(isset($_POST['submit']))
-        {   
-            //faz referencia ao config
-            include_once('config.php');
+    }
+    if(isset($_POST['text']))
+    { 
+        include_once('config.php');
 
-            //armazena os valoras dos formularios em variaveis
-            $nome  = $_POST['text'];
-            $cpf = $_POST['cpf'];
-            $dataNasc = $_POST['data'];
-            $email = $_POST['email'];
-            $SEXO = $_POST['sexo'];
-            $telefone = $_POST['tel'];
-            $minhasenha = MD5($_POST['password']);
-            
-            //insere no bd
-            $result = mysqli_query($conexao, "INSERT INTO CLIENTE(NOME_CLIENTE,CPF,DATA_NASCIMENTO,EMAIL_CLIENTE,SEXO,TELEFONE_CLIENTE,SENHA_CLIENTE) VALUES ('$nome','$cpf','$dataNasc','$email','$SEXO','$telefone','$minhasenha')");
+        $email = $_POST['email'];
+
+        $sql = "SELECT NOME_CLIENTE FROM CLIENTE WHERE EMAIL_CLIENTE = '$email'";
+        $result = $conexao->query($sql);
+        //se receber algo do submit
+        if(isset($_POST['submit']))
+        {
+            if((mysqli_num_rows($result) < 1)){
+                $nome  = $_POST['text'];
+                $cpf = $_POST['cpf'];
+                $dataNasc = $_POST['data'];
+                $email = $_POST['email'];
+                $SEXO = $_POST['sexo'];
+                $telefone = $_POST['tel'];
+                $minhasenha = MD5($_POST['password']);
+
+                $result = mysqli_query($conexao, "INSERT INTO CLIENTE(NOME_CLIENTE,CPF,DATA_NASCIMENTO,EMAIL_CLIENTE,SEXO,TELEFONE_CLIENTE,SENHA_CLIENTE) VALUES ('$nome','$cpf','$dataNasc','$email','$SEXO','$telefone','$minhasenha')");
+            }else{
+                echo"<script>alert('Email ja cadastrado!');</script>";
+            }
         }
     }
     
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -255,7 +268,11 @@
         font-size: 15px;
         color: var(--white);
     }
-
+    
+    a {
+    text-decoration: none;
+    color: var(--vermelho);
+    }
     .ativo {
         color: blue !important;
     }
