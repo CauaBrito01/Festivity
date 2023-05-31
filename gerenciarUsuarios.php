@@ -153,7 +153,7 @@
         <table class="table table-bg ">
         <thead>
                 <tr>
-                    <th scope="col">#id</th>
+                    
                     <th scope="col">Nome</th>
                     <th scope="col">CPF</th>
                     <th scope="col">Senha</th>
@@ -161,7 +161,7 @@
                     <th scope="col">Telefone</th>
                     <th scope="col">Sexo</th>
                     <th scope="col">Data de Nascimento</th>
-                    <th scope="col">...</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -169,7 +169,7 @@
                 while($user_data = mysqli_fetch_assoc($result))
                 {
                     echo "<tr>";
-                        echo "<td>".$user_data['ID_CLIENTE']."</td>";
+                        
                         echo "<td>".$user_data['NOME_CLIENTE']."</td>";
                         echo "<td>".$user_data['CPF']."</td>";
                         echo "<td>".$user_data['SENHA_CLIENTE']."</td>";

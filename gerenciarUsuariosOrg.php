@@ -127,7 +127,7 @@
             </div>
             <div class="headerTextoContainer">
                 <div class="headerOptions">
-                    <a href="meusEventos.php">
+                    <a href="MeusEventos.php">
                         <p>Meus Eventos</p>
                     </a>
                     <a href="CadastroEvento.php">
@@ -162,7 +162,6 @@
         <table class="table table-bg ">
         <thead>
                 <tr>
-                    <th scope="col">#id</th>
                     <th scope="col">Nome Organizador</th>
                     <th scope="col">Senha</th>
                     <th scope="col">Email</th>
@@ -175,7 +174,6 @@
                 while($user_data = mysqli_fetch_assoc($resultOrg))
                 {
                     echo "<tr>";
-                        echo "<td>".$user_data['ID_ORGANIZADOR']."</td>";
                         echo "<td>".$user_data['NOME_ORGANIZADOR']."</td>";
                         echo "<td>".$user_data['SENHA_ORGANIZADOR']."</td>";
                         echo "<td>".$user_data['EMAIL_ORGANIZADOR']."</td>";

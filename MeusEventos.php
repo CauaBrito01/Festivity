@@ -41,6 +41,74 @@
 
     <link rel="stylesheet" href="./Styles/reset.css">
     <link rel="stylesheet" href="./Styles/footer.css">
+    <style>
+        
+        
+        *
+        {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        :root {
+            --cinzaEscuro: #16171b;
+            --cinzaClaro: #222327;
+            --white: #f1efef;
+            --vermelho: #bb432c;
+        }
+
+        body{
+            background-color: var(--cinzaEscuro);
+        }
+
+        table.table.table-bg {
+            display: block;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            padding-left: 20%;
+            background-color: var(--cinzaClaro);
+            color: white;  
+            width: 100%;
+            /* align-items: center; */
+            justify-content: center;
+            margin-top: 10%;
+
+        }
+
+        thead {
+            font-size: 15px;
+
+        }
+
+        td , th{
+            padding:2%;
+            
+        }
+
+        .bodyID{
+            margin-bottom: 5rem;
+        }
+
+        .table-bg{
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px 15px 0 0;
+            border:1px solid var(--vermelho);
+            box-shadow: 2px 5px 20px 5px var(--vermelho);
+
+        }
+
+        .imgContainer{
+            display:flex;
+            align-itens:center;
+            justify-content:center;
+            width:100%;
+            padding-bottom:5%;
+
+        }
+
+        
+    </style>
 
 </head>
 <body>
@@ -52,7 +120,7 @@
             </div>
             <div class="headerTextoContainer">
                 <div class="headerOptions">
-                    <a href="meusEventos.php">
+                    <a href="MeusEventos.php">
                         <p>Meus Eventos</p>
                     </a>
                     <a href="CadastroEvento.php">
@@ -81,72 +149,22 @@
     </header>   
 </section>
 
-<main>
-        <div class="mainContainer">
 
-            <div class="item">
-                <div class="tituloMain"><h1>Meus Eventos</h1></div>
-            
-                <div class="tituloEvento"><h2>COLDPLAY: Music of the spheres</h2></div>
-
-                <div class="eventoContainer">
-                    
-                    <div class="linha1">
-                        <p>Status Vendas: Fechadas</p>
-                        <p>Data: Dia 21 e 22 de Março</p>
-                        <p>Lote Atual: 1º</p>
-                    </div>
-                    
-                    <div class="linha2">
-                        <p>Ingressos Vendidos: 0</p>
-                        <p>Faixa Etaria: 18</p>
-                        <p>Horario: Apartir de 22:00h</p>
-                    </div>
-                    <div class="linha3">
-                        
-                        <div class="organizadoraEvento">
-                            
-                            <div class="desc_organizadores">
-                                <img class="img_logo_organizador_evento" src="./images/coldplay.jpg" alt="capa_festa"> 
-                            </div>
-                            <div>
-                                <h3 class="titulo_descricao">Organizador Do Evento</h3>
-                                <p class="txt_descricao">COLDPLAY</p>
-                                <p class="txt_descricao">ENTIDADE ORGANIZADORA DE EVENTOS</p>
-                            </div>
-                        </div>
-
-                        
-
-                    </div>  
-                    
-        
-
-                </div>
-            </div>
-
-            
-        </div>
-    </main>
-
-     <!-- <section>
+      <section>
         <div class="m-5"> 
             <table class="table table-bg ">
                 <thead>
                     <tr>
-                        <th scope="col">#id</th>
                         <th scope="col">Nome Evento</th>
                         <th scope="col">Data Evento</th>
                         <th scope="col">Local</th>
                         <th scope="col">Faixa Etaria</th>
                         <th scope="col">Descrição Evento</th>
                         <th scope="col">Endereço</th>
-                        <th scope="col">#id Organizador</th>
                         <th scope="col">Valor Ingresso</th>
                         <th scope="col">Endereço</th>
                         <th scope="col">Imagem Perfil</th>
                         <th scope="col">Imagem Capa</th>
-                        <th scope="col">...</th>
                         
                     </tr>
                 </thead>
@@ -155,14 +173,12 @@
                     while($user_data = mysqli_fetch_assoc($result))
                     {
                         echo "<tr>";
-                            echo "<td>".$user_data['ID_EVENTO']."</td>";
                             echo "<td>".$user_data['NOME_EVENTO']."</td>";
                             echo "<td>".$user_data['DATA_EVENTO']."</td>";
                             echo "<td>".$user_data['LOCAL']."</td>";
                             echo "<td>".$user_data['FAIXA_ETARIA']."</td>";
                             echo "<td>".$user_data['DESCRICAO_EVENTO']."</td>";
                             echo "<td>".$user_data['ENDERECO']."</td>";
-                            echo "<td>".$user_data['ID_ORGANIZADOR']."</td>";
                             echo "<td>".$user_data['VALOR_INGRESSO']."</td>";
                             echo "<td>".$user_data['ENDERECO']."</td>";
                             echo "<td>".$user_data['IMAGEM_PERFIL']."</td>";
@@ -174,7 +190,7 @@
                 </tbody>
             </table>
         </div>
-    </section> -->
+    </section> 
    
 </body>
 <footer>
@@ -194,3 +210,13 @@
 
    </footer>
 </html>
+
+<script>
+    var search = document.getElementById('pesquisar');
+
+    function searchData()
+    {
+        window.alert("Chamou a função ");
+        window.location = "meusEventos.php?search="+search.value;
+    }
+</script>

@@ -73,7 +73,7 @@
             </div>
             <div class="headerTextoContainer">
                 <div class="headerOptions">
-                    <a href="meusEventos.php">
+                    <a href="MeusEventos.php">
                         <p>Meus Eventos</p>
                     </a>
                     <a href="CadastroEvento.php">
