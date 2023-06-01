@@ -178,9 +178,17 @@
 
             </div>
 
+
             <div class="containerImage">
-                <image src="./images/telaDePerfil-Imagem.png">
-            </div>
+               
+                <div class="imagemPerfil">
+                    <img src="" />
+                </div>
+                <div class="inputImageContainer">
+                    <input type="file" placeholder="Mude sua imagem de perfil"/>
+                </div>
+
+            
 
         </div>
 
