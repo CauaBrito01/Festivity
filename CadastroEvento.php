@@ -48,6 +48,20 @@
         
         //insere no bd
         $result = mysqli_query($conexao, "INSERT INTO EVENTO(NOME_EVENTO,DATA_EVENTO,FAIXA_ETARIA,DESCRICAO_EVENTO,ENDERECO,VALOR_INGRESSO) VALUES ('$nomeEvento','$dataEhora','$faixaEtaria','$descEvento','$endereco','$valor')");
+        
+        $logado= session_name();
+
+
+    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1000)) {
+        // last request was more than 10 minutes ago
+        session_unset();     // unset $_SESSION variable for the run-time 
+        session_destroy();   // destroy session data in storage
+        echo "Session is expired at " .  gmdate("H:i:s", time()) .  "<br/>";
+        header('Location: telaLogin.php');
+    }
+    $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+    
+    $logado = $_SESSION['email'];
     }
 
 
@@ -111,7 +125,7 @@
                     
                 </div>
                 <div class="dados_evento">
-                    <form action="CadastroEvento.php"  method="POST" class="clienteDados" name="clienteForm">
+                    <form action="CadastroEvento.php"  method="POST" class="clienteDados" name="clienteForm" >
                         <div class="secao1">
                             <p class="secao_registro">01| Preencha alguns dados sobre seu evento </p>
                             <p class="campo_registro">Nome da Página*</p>
