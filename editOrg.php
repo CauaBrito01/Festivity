@@ -68,9 +68,44 @@
     }
     $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
     
-    $logado = $_SESSION['email'];
+    $logado = $_SESSION['emailOrganizador'];
 
     }
+
+    if(isset($_FILES['file'])){ // empty
+
+        include_once('config.php');
+
+
+        $arquivo = $_FILES['file'];
+        $nomeArquivo = $arquivo['name'];
+
+        $tamanho = $arquivo['size'];
+        $tamanhoMaximo = 1024 *1024 * 5; //5MB
+
+        if($tamanho > $tamanhoMaximo){
+            die("Seu arquivo excede o tamanho máximo<br>");
+        }
+
+        $novoNomeArquivo = uniqid();
+        $pasta = "images/uploads/organizador/";
+        $extensao = strtolower(pathinfo($nomeArquivo, PATHINFO_EXTENSION));
+
+        if($extensao !=  "jpg" && $extensao != "png" && $extensao != "jpeg"){
+            die("Tipo de arquivo não aceito");
+        }
+        $path = $pasta . $novoNomeArquivo . "." . $extensao;
+        $deuCerto = move_uploaded_file($arquivo["tmp_name"], $path);
+
+        if(true){
+            $sqlUpdates = "UPDATE ORGANIZADOR SET IMAGEM_ORGANIZADOR = '$path' WHERE EMAIL_ORGANIZADOR = '$logado'";
+            $result = $conexao->query($sqlUpdates);
+        }
+        
+    }
+
+    include_once('config.php');
+    $sql_query = $conexao->query("SELECT IMAGEM_ORGANIZADOR FROM ORGANIZADOR WHERE EMAIL_ORGANIZADOR = '$logado'");
 
     
 ?>
@@ -119,6 +154,9 @@
                             echo "<h1><u>$logado</u></h1>";
                         ?>
                         </div>
+
+                        
+
                         <div class="sair">
                             <a href="sair.php">SAIR</a>
                         </div>
@@ -130,11 +168,6 @@
 </section>
 
         <div class="container">
-            <div class="containerImage">
-                <image src="./images/OrganizadorImage.png">
-            </div>
-        
-
             <div class="inputs">
                 <h2>Editar dados da Conta</h2>
 
@@ -186,22 +219,32 @@
                 </form>
 
             </div>
-        </div>
-        
-
-                    
-                                   
-                        
-                        <div  class="botaoLogin">
-                            
+            <div class="containerImage">
+                    <?php 
+                        while($arquivo = $sql_query->fetch_assoc()){
+                    ?>
+                        <div class="imagemPerfil">
+                                <img height="60px" src="<?php echo $arquivo['IMAGEM_ORGANIZADOR']; ?>" />
                         </div>
+                    <?php 
+                        }
+                    ?>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <div class="inputImageContainer">
+                            <input type="file" name="file" id="file">
+                            <input type="submit" value="Enviar" name="submit">
+                        </div>
+                        
+                    </form>
+                </div>
 
+        </div>
 
     </main>
     
 </body>
 </html>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 
@@ -311,6 +354,20 @@
             event.preventDefault();
             alert('Confirmar senha tem que conter a mesma senha');
             return
+        }else{
+            Swal.fire({
+                title: 'Do you want to save the changes?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Save',
+                denyButtonText: `Don't save`,
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire('Saved!', '', 'success')
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
+                }
+            })
         }
         
     }

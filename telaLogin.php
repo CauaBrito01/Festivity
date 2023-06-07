@@ -294,6 +294,8 @@
 
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
 
     //constantes de usuario
@@ -310,7 +312,7 @@
     const senha = form.querySelectorAll('input[type="password"]')[0];
 
     //constantes de regex organizador
-    const cnpj = form.querySelector('input[name="cnpj"]');
+    const emailOrganizador = form.querySelector('input[name="emailOrganizador"]');
     const senhaOrganizador = form.querySelectorAll('input[type="senhaOrganizador"]')[0];
 
     //regex expressoes
@@ -322,26 +324,42 @@
 
         if (!regexEmail.test(email.value)) {
             event.preventDefault();
-            alert('O email inserido é invalido, exemplo de email válido: kaua.silva@outlook.com');
+            Swal.fire({
+                icon: 'error',
+                title: 'O email inserido é invalido',
+                text: ' exemplo de email válido: kaua.silva@outlook.com',
+            });
+            return
         }
 
         if (!regexSenha.test(senha.value)) {
             event.preventDefault();
-            alert('A senha inserida é incorreta.');
+            Swal.fire({
+                icon: 'error',
+                title: 'A senha inserida é invalida',
+            });
         }
 
     }
 
     function logarOrganizador(){
 
-        if (!regexEmail.test(cnpj.value)) {
+        if(!regexEmail.test(emailOrganizador.value)) {
             event.preventDefault();
-            alert('O cpnj inserido é invalido');
+            Swal.fire({
+                icon: 'error',
+                title: 'O email inserido é invalido',
+                text: ' exemplo de email válido: kaua.silva@outlook.com',
+            });
+            return
         }
 
-        if (!regexSenha.test(senhaOrganizador.value)) {
+        if(!regexSenha.test(senhaOrganizador.value)) {
             event.preventDefault();
-            alert('A senha inserida é incorreta.');
+            Swal.fire({
+                icon: 'error',
+                title: 'A senha inserida é invalida',
+            });
         }
 
     }

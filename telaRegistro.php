@@ -400,155 +400,7 @@
 
 </style>
 
-<script>
-
-    // constantes para o tipo de usuario
-
-    const tipoDeUsuario = document.querySelector('div[name="tipoDeUsuario"]');
-    const cliente = tipoDeUsuario.querySelector('a[name="cliente"]');
-    const organizador = tipoDeUsuario.querySelector('a[name="organizador"]');
-    const form = document.querySelector('form[name="clienteForm"]');
-    const orgForm = document.querySelector('form[name="organizadorForm"]');
-
-    // constantes para o regex do cliente
-
-    const nome = form.querySelector('input[name="text"]');
-    const cpf = form.querySelector('input[name="cpf"]');
-    const data = form.querySelector('input[name="data"]');
-    const email = form.querySelector('input[name="email"]');
-    const cel = form.querySelector('input[name="tel"]');
-    const senha = form.querySelectorAll('input[type="password"]')[0];
-    const confirmarSenha = form.querySelectorAll('input[type="confirmarSenha"]')[1];
-    
-    //regex expressoes
-
-    const regexNome = /^[a-zA-Z]+\s+[a-zA-Z]+(\s+[a-zA-Z]+)*$/;
-    const regexCpf = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
-    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const regexCel = /^\d{11}$/;
-    const regexSenha = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
-
-    // constantes para o regex do organizador 
-
-    const nomeOrganizador = orgForm.querySelector('input[name="nomeOrganizador"]');
-    const cnpj = orgForm.querySelector('input[name="cnpj"]');
-    const emailOrganizador = orgForm.querySelector('input[name="emailOrganizador"]');
-    const telOrganizador = orgForm.querySelector('input[name="telOrganizador"]');
-    const senhaOrganizador = orgForm.querySelectorAll('input[type="senhaOrganizador"]')[0];
-    const confirmarSenhaOrganizador = orgForm.querySelectorAll('input[type="confirmarSenhaOrganizador"]')[1];
-
-    
-    function selectTipoCliente(){
-        cliente.classList.add("ativo");
-        organizador.classList.remove("ativo");
-        form.classList.remove("hidden");
-        orgForm.classList.add("hidden");
-    }
-
-    function selectTipoOrganizador(){
-        organizador.classList.add("ativo");
-        cliente.classList.remove("ativo");
-        form.classList.add("hidden");
-        orgForm.classList.remove("hidden");
-    }
-
-   
-    function validarDataNascimento() {
-        var inputData = document.getElementsByName("data")[0].value; 
-        var dataNascimento = new Date(inputData); 
-
-        if (!inputData || dataNascimento.toString() === "Invalid Date") {
-            alert("Data inválida!"); 
-        } else {
-            var dataAtual = new Date(); 
-            var idade = dataAtual.getFullYear() - dataNascimento.getFullYear(); 
-
-            if (idade < 10) {
-            alert("Você deve ter pelo menos 10 anos de idade!");
-            } else {
-            alert("Data válida!");
-            }
-        }
-    }
-
-    
-    function createCliente() {
-        if (!regexNome.test(nome.value)) {
-            event.preventDefault();
-            alert('O nome inserido é inválido, exeplo de nome valido: Kaua da silva');
-            return;
-        }
-
-        if (!regexCpf.test(cpf.value)) {
-            event.preventDefault();
-            alert('O cpf inserido é invalido, exemplo de cpf válido: 131.656.739-77');
-            return;
-        }
-
-        validarDataNascimento(); // Corrigido: chama a função validarDataNascimento
-
-        if (!regexEmail.test(email.value)) {
-            event.preventDefault();
-            alert('O email inserido é invalido, exemplo de email válido: kaua.silva@outlook.com');
-            return;
-        }
-
-        if (!regexCel.test(cel.value)) {
-            event.preventDefault();
-            alert('O telefone inserido é invalido, exemplo de telefone válido: 41 995059834');
-            return;
-        }
-
-        if (!regexSenha.test(senha.value) || !regexSenha.test(confirmarSenha.value)) {
-            event.preventDefault();
-            alert('A senha inserida é fraca, insira uma senha com 1 letra maiscula, 1 numero e com pelo menos 8 caracteres');
-            return;
-        }
-
-        if (senha.value !== confirmarSenha.value) { // Corrigido: compara os valores de senha e confirmarSenha
-            event.preventDefault();
-            alert('Confirmar senha tem que conter a mesma senha');
-            return;
-        }
-        }
-
-
-    function createOrganizador(){
-        if (!regexNome.test(nomeOrganizador.value)) {
-            event.preventDefault();
-            alert('O nome inserido é inválido, exeplo de nome valido: Kaua da silva');
-            return
-        }
-
-        if (!regexCpf.test(cnpj.value)) {
-            event.preventDefault();
-            alert('O CNPJ inserido é invalido, exemplo de CNPJ válido: 131.656.739-77');
-            return
-        }
-
-        if (!regexEmail.test(emailOrganizador.value)) {
-            event.preventDefault();
-            alert('O email inserido é invalido, exemplo de email válido: kaua.silva@outlook.com');
-            return
-        }
-
-        if (!regexCel.test(telOrganizador.value)) {
-            event.preventDefault();
-            alert('O telefone inserido é invalido, exemplo de telefone válido: 41 995059834');
-            return
-        }
-
-        if (!regexSenha.test(senhaOrganizador.value) || !confirmarSenha.test(senha.value)) {
-            event.preventDefault();
-            alert('A senha inserida é fraca, insira uma senha com 1 letra maiscula, 1 numero e com pelo menos 8 caracteres');
-            return
-        }
-
-    }
-    
-    
-</script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 
@@ -569,25 +421,26 @@
     const cel = form.querySelector('input[name="tel"]');
     const senha = form.querySelectorAll('input[type="password"]')[0];
     const confirmarSenha = form.querySelectorAll('input[type="confirmarSenha"]')[1];
-    
+   
     //regex expressoes
 
     const regexNome = /^[a-zA-Z]+\s+[a-zA-Z]+(\s+[a-zA-Z]+)*$/;
     const regexCpf = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+    const regexCnpj = /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/;
     const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const regexCel = /^\d{11}$/;
-    const regexSenha = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+    const regexSenha = /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
-    // constantes para o regex do organizador 
+    // constantes para o regex do organizador
 
     const nomeOrganizador = orgForm.querySelector('input[name="nomeOrganizador"]');
     const cnpj = orgForm.querySelector('input[name="cnpj"]');
     const emailOrganizador = orgForm.querySelector('input[name="emailOrganizador"]');
     const telOrganizador = orgForm.querySelector('input[name="telOrganizador"]');
-    const senhaOrganizador = orgForm.querySelectorAll('input[type="senhaOrganizador"]')[0];
-    const confirmarSenhaOrganizador = orgForm.querySelectorAll('input[type="confirmarSenhaOrganizador"]')[1];
+    const senhaOrganizador = orgForm.querySelectorAll('input[name="senhaOrganizador"]')[0];
+    const confirmarSenhaOrganizador = orgForm.querySelectorAll('input[name="confirmarSenhaOrganizador"]')[1];
 
-    
+   
     function selectTipoCliente(){
         cliente.classList.add("ativo");
         organizador.classList.remove("ativo");
@@ -604,98 +457,156 @@
 
    
     function validarDataNascimento() {
-        alert('eee');
-        var inputData = document.getElementsByName("data")[0].value; 
-        var dataNascimento = new Date(inputData); 
+        var inputData = document.getElementsByName("data")[0].value;
+        var dataNascimento = new Date(inputData);
 
         if (!inputData || dataNascimento.toString() === "Invalid Date") {
-            alert("Data inválida!"); 
+            Swal.fire({
+                icon: 'error',
+                title: 'Data vazia',
+                text: 'Por favor insira uma data',
+            })
         } else {
-            var dataAtual = new Date(); 
-            var idade = dataAtual.getFullYear() - dataNascimento.getFullYear(); 
+            var dataAtual = new Date();
+            var idade = dataAtual.getFullYear() - dataNascimento.getFullYear();
 
             if (idade < 10) {
-            alert("Você deve ter pelo menos 10 anos de idade!");
-            } else {
-            alert("Data válida!");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Ops, você é muito jovem...',
+                    text: 'Para usar no site você precisa de pelo menos 10 anos :c',
+                })
+            }else{
+                Swal.fire({
+                    icon: 'success',
+                    title: 'A conta foi criada com sucesso',
+                })
             }
         }
     }
 
-    
+   
     function createCliente() {
         if (!regexNome.test(nome.value)) {
             event.preventDefault();
-            alert('O nome inserido é inválido, exeplo de nome valido: Kaua da silva');
+            Swal.fire({
+                icon: 'error',
+                title: 'O nome inserido é inválido',
+                text: 'exeplo de nome valido: Kaua da silva',
+            })
             return;
         }
 
         if (!regexCpf.test(cpf.value)) {
             event.preventDefault();
-            alert('O cpf inserido é invalido, exemplo de cpf válido: 131.656.739-77');
+            Swal.fire({
+                icon: 'error',
+                title: 'O cpf inserido é invalido',
+                text: ' exemplo de cpf válido: xxx.xxx.xxx-xx',
+            })
             return;
         }
 
-        validarDataNascimento(); // Corrigido: chama a função validarDataNascimento
+        validarDataNascimento();
 
         if (!regexEmail.test(email.value)) {
             event.preventDefault();
-            alert('O email inserido é invalido, exemplo de email válido: kaua.silva@outlook.com');
+            Swal.fire({
+                icon: 'error',
+                title: 'O email inserido é invalido',
+                text: ' exemplo de email válido: kaua.silva@outlook.com',
+            });
             return;
         }
 
         if (!regexCel.test(cel.value)) {
             event.preventDefault();
-            alert('O telefone inserido é invalido, exemplo de telefone válido: 41 995059834');
+            Swal.fire({
+                icon: 'error',
+                title: 'O telefone inserido é invalido',
+                text: 'exemplo de telefone válido: XXxxxxxxxxx',
+            })
             return;
         }
 
-        if (!regexSenha.test(senha.value) || !regexSenha.test(confirmarSenha.value)) {
+        if (!regexSenha.test(senha.value)){
             event.preventDefault();
-            alert('A senha inserida é fraca, insira uma senha com 1 letra maiscula, 1 numero e com pelo menos 8 caracteres');
-            return;
+            Swal.fire({
+                icon: 'error',
+                title: 'senha invalida',
+                text: 'A senha precisa conter pelo menos 8 caracteres e 1 letra maiscula e minuscula',
+            })
+            return
         }
 
-        if (senha.value !== confirmarSenha.value) { // Corrigido: compara os valores de senha e confirmarSenha
-            event.preventDefault();
-            alert('Confirmar senha tem que conter a mesma senha');
-            return;
+        if(true){
+            Swal.fire({
+                icon: 'success',
+                title: 'A conta foi criada com sucesso',
+            })
         }
-        }
+
+    }
 
 
     function createOrganizador(){
         if (!regexNome.test(nomeOrganizador.value)) {
             event.preventDefault();
-            alert('O nome inserido é inválido, exeplo de nome valido: Kaua da silva');
+            Swal.fire({
+            icon: 'error',
+            title: 'O nome inserido é inválido',
+            text: ' exeplo de nome valido: Lojas positivo',
+            })
             return
         }
 
-        if (!regexCpf.test(cnpj.value)) {
+        if (!regexCnpj.test(cnpj.value)) {
             event.preventDefault();
-            alert('O CNPJ inserido é invalido, exemplo de CNPJ válido: 131.656.739-77');
+            Swal.fire({
+            icon: 'error',
+            title: 'O CNPJ inserido é invalido',
+            text: 'exemplo de CNPJ válido:  12.345.678/0001-90',
+            })
             return
         }
 
         if (!regexEmail.test(emailOrganizador.value)) {
             event.preventDefault();
-            alert('O email inserido é invalido, exemplo de email válido: kaua.silva@outlook.com');
+            Swal.fire({
+            icon: 'error',
+            title: 'O email inserido é invalido',
+            text: 'exemplo de email válido: kaua.silva@outlook.com',
+            })
             return
         }
 
         if (!regexCel.test(telOrganizador.value)) {
             event.preventDefault();
-            alert('O telefone inserido é invalido, exemplo de telefone válido: 41 995059834');
+            Swal.fire({
+            icon: 'error',
+            title: 'O telefone inserido é invalido',
+            text: 'exemplo de telefone válido: XXxxxxxxxxx',
+            })
             return
         }
 
-        if (!regexSenha.test(senhaOrganizador.value) || !confirmarSenha.test(senha.value)) {
+        if (!regexSenha.test(senhaOrganizador.value)){
             event.preventDefault();
-            alert('A senha inserida é fraca, insira uma senha com 1 letra maiscula, 1 numero e com pelo menos 8 caracteres');
+            Swal.fire({
+                icon: 'error',
+                title: 'senha invalida',
+                text: 'A senha precisa conter pelo menos 8 caracteres e 1 letra maiscula e minuscula',
+            })
             return
         }
 
+        if(true){
+            Swal.fire({
+                icon: 'success',
+                title: 'A conta foi criada com sucesso',
+            })
+        }
     }
-    
-    
+   
+   
 </script>

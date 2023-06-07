@@ -69,6 +69,47 @@
     $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
     
     $logado = $_SESSION['email'];
+        
+    
+
+
+    if(isset($_FILES['file'])){ // empty
+
+        include_once('config.php');
+
+
+        $arquivo = $_FILES['file'];
+        $nomeArquivo = $arquivo['name'];
+
+        $tamanho = $arquivo['size'];
+        $tamanhoMaximo = 1024 *1024 * 5; //5MB
+
+        if($tamanho > $tamanhoMaximo){
+            die("Seu arquivo excede o tamanho máximo<br>");
+        }
+
+        $novoNomeArquivo = uniqid();
+        $pasta = "images/uploads/usuario/";
+        $extensao = strtolower(pathinfo($nomeArquivo, PATHINFO_EXTENSION));
+
+        if($extensao !=  "jpg" && $extensao != "png" && $extensao != "jpeg"){
+            die("Tipo de arquivo não aceito");
+
+        }
+
+        $path = $pasta . $novoNomeArquivo . "." . $extensao;
+        $deuCerto = move_uploaded_file($arquivo["tmp_name"], $path);
+
+        if(true){
+            $sqlUpdates = "UPDATE CLIENTE SET IMAGEM_CLIENTE = '$path' WHERE EMAIL_CLIENTE = '$logado'";
+            $result = $conexao->query($sqlUpdates);
+        }
+        
+    }
+
+    include_once('config.php');
+    $sql_query = $conexao->query("SELECT IMAGEM_CLIENTE FROM CLIENTE WHERE EMAIL_CLIENTE = '$logado'");
+    
 
 ?>
 
@@ -193,7 +234,7 @@
             </div>
 
 
-            <div class="containerImage">
+            <!-- <div class="containerImage">
                
                 <div class="imagemPerfil">
                     <img src="" />
@@ -202,9 +243,27 @@
                     <input type="file" placeholder="Mude sua imagem de perfil"/>
                 </div>
 
-            
+            </div> -->
 
-        </div>
+            <div class="containerImage">
+                    <?php 
+                        while($arquivo = $sql_query->fetch_assoc()){
+                    ?>
+                        <div class="imagemPerfil">
+                                <img height="60px" src="<?php echo $arquivo['IMAGEM_CLIENTE']; ?>" />
+                        </div>
+                    <?php 
+                        }
+                    ?>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <div class="inputImageContainer">
+                            <input type="file" name="file" id="file">
+                            <input type="submit" value="Enviar" name="submit">
+                        </div>
+                        
+                    </form>
+                </div>
+
 
 </body>
 

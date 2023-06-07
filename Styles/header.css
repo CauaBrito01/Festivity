@@ -3,7 +3,7 @@
 }
 
 a{
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 header .logo img{
@@ -55,6 +55,7 @@ header .headerOptions{
 
 .loginEcadastro{
     display: flex;
+    align-items: center;
 }
 
 .loginEcadastro a{
@@ -88,4 +89,14 @@ header .headerOptions{
 
 u {
     margin-right: 50px !important;
+}
+
+.imagemPerfil {
+    margin-right: 5%;
+}
+
+
+.imagemPerfil img{
+    border-radius: 100%;
+    margin-right: 5%;
 }

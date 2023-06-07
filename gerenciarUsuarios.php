@@ -30,6 +30,10 @@
     $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
     
     $logado = $_SESSION['email'];
+
+    include_once('config.php');
+
+    $sql_query = $conexao->query("SELECT IMAGEM_CLIENTE FROM CLIENTE WHERE EMAIL_CLIENTE = '$logado'");
 ?>
 
 <!DOCTYPE html>
@@ -149,6 +153,15 @@
                             echo "<h1><u>$logado</u></h1>";
                         ?>
                         </div>
+                        <?php 
+                        while($arquivo = $sql_query->fetch_assoc()){
+                    ?>
+                        <div class="imagemPerfil">
+                                <img height="60px" src="<?php echo $arquivo['IMAGEM_CLIENTE']; ?>" />
+                        </div>
+                    <?php 
+                        }
+                    ?>
                         <div class="sair">
                             <a href="sair.php">SAIR</a>
                         </div>

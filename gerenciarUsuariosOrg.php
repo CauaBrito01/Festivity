@@ -14,6 +14,7 @@
 
     $sqlOrg = "SELECT ID_ORGANIZADOR ,NOME_ORGANIZADOR, EMAIL_ORGANIZADOR,CNPJ, TELEFONE_ORGANIZADOR, SENHA_ORGANIZADOR FROM ORGANIZADOR WHERE EMAIL_ORGANIZADOR = '$logado'";
 
+    $sql_query = $conexao->query("SELECT IMAGEM_ORGANIZADOR FROM ORGANIZADOR WHERE EMAIL_ORGANIZADOR = '$logado'");
 
 
     $resultOrg = $conexao->query($sqlOrg);
@@ -30,7 +31,7 @@
     }
     $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
     
-    $logado = $_SESSION['email'];
+    $logado = $_SESSION['emailOrganizador'];
 ?>
 
 <!DOCTYPE html>
@@ -158,6 +159,15 @@
                             echo "<h1><u>$logado</u></h1>";
                         ?>
                         </div>
+                        <?php 
+                        while($arquivo = $sql_query->fetch_assoc()){
+                    ?>
+                        <div class="imagemPerfil">
+                                <img height="60px" src="<?php echo $arquivo['IMAGEM_ORGANIZADOR']; ?>" />
+                        </div>
+                    <?php 
+                        }
+                    ?>
                         <div class="sair">
                             <a href="sair.php">SAIR</a>
                         </div>
